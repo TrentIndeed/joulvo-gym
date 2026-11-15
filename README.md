@@ -55,6 +55,7 @@ controllers' currents are still to be bench-tested, and nothing is load-tested y
 | `bom/BOM.md` | the bill of materials |
 | `SAFETY.md` | read before building or powering anything |
 | `LICENSE.md`, `LICENSES/` | the licences, and the reserved name and logo |
+| `AGENTS.md` | instructions for AI coding agents working on this repository |
 
 **Not here yet:** CAD (STEP, DXF, editable source), print files, and the Pi, Teensy and phone software. They are released
 together after testing.
