@@ -21,7 +21,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <th>Build</th>
 <th>Status</th>
-<th>Pull</th>
+<th>Resistance</th>
 <th>Motor</th>
 <th>Controller</th>
 <th>Power</th>
@@ -34,7 +34,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <td><strong>V1</strong></td>
 <td>CAD, not built yet</td>
-<td>up to about 180 lb (design estimate)</td>
+<td>180 lb (design target)</td>
 <td>APS 8072S, direct drive</td>
 <td>ODrive Pro</td>
 <td>10S battery: two 5S LiPo packs</td>
@@ -45,7 +45,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <td><strong>V1 (220 battery)</strong></td>
 <td>CAD first look, not built</td>
-<td>220 lb is the design target; not yet calculated for this build</td>
+<td>220 lb (design target; not yet calculated for this build)</td>
 <td>Hobbywing XRotor V11130, direct drive</td>
 <td>Flipsky 75200 (VESC type)</td>
 <td>10S battery: two 5S LiPo packs</td>
@@ -56,7 +56,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <td><strong>V1 wall power (220)</strong></td>
 <td>CAD first look, not built</td>
-<td>220 lb is the design target; V1's parts are calculated at 180 lb only</td>
+<td>220 lb (design target; V1's parts are calculated at 180 lb only)</td>
 <td>APS 8072S, direct drive</td>
 <td>ODrive Pro with a regen clamp</td>
 <td>48 V, 1,000 W wall supply in a floor box</td>
@@ -67,7 +67,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <td><strong>V1 budget wall power</strong></td>
 <td>CAD first look, not built</td>
-<td>to come: it depends on the controller's real current limit</td>
+<td>180 lb (design target; it depends on the controller's real current limit)</td>
 <td>APS 8072S, direct drive</td>
 <td>ODESC V4.2</td>
 <td>48 V, 600 W wall supply in a floor box</td>
@@ -78,7 +78,7 @@ below gives V1's sizes and counts.</p>
 <tr>
 <td><strong>V1 wall mount (300)</strong></td>
 <td>CAD first look, not built</td>
-<td>300 lb is the design target; not yet calculated for this build</td>
+<td>300 lb (design target; not yet calculated for this build)</td>
 <td>Hobbywing XRotor V11130, direct drive</td>
 <td>Flipsky 75200 (VESC type) with a regen clamp</td>
 <td>48 V, 1,000 W wall supply in a floor box</td>
@@ -88,15 +88,16 @@ below gives V1's sizes and counts.</p>
 </tr>
 </tbody>
 </table></div>
-<p><strong>About the numbers.</strong> Nothing is built in metal or load-tested, so there are no ratings here. V1's pull, about 180 lb, is a
-design estimate: it is where the calculation reaches the controller's current limit on the 1 in drum. The 220 and 300 in the
-other builds' names are design targets. Those builds are shape-and-fit first looks, and V1's drive parts (coupling, shaft, drum,
-bearings, plates) have only been calculated at V1's load.</p>
+<p><strong>About the numbers.</strong> Nothing is built in metal or load-tested, so there are no ratings here: each resistance is a design
+target. V1's 180 lb is about where the calculation reaches the controller's current limit on the 1 in drum. The 220 and 300 lb
+builds are shape-and-fit first looks, and V1's drive parts (coupling, shaft, drum, bearings, plates) have only been calculated
+at V1's load. The budget build's 180 lb waits on a bench test of its controller. V1 at 180 lb is built first; the 220 lb
+battery build is planned to become the main build after it.</p>
 <ul>
-<li><strong>V1:</strong> V1 is the current design. An APS 8072S outrunner turns a 1 in drum through one bought coupling, with no belt or gear. The frame is a box of five 3/8 in 6061 plates; the covers and the deck are printed. An ODrive Pro drives the motor from two 5S LiPo packs in series behind a BMS and a 60 A fuse, and the packs take the energy back when the weight is lowered. A Raspberry Pi 4 with a 4 in touchscreen and a small control board with a Teensy 4.0 run it. The rope winds in one even layer behind a geared rope guide and leaves through an exit that swivels on two bearings; it is drawn to touch only metal on the way out.The rack mount is a quick release: two 1 in pins hold it on the upright, the unit hangs on four studs and a spring latch locks it. About 180 lb is where the calculation reaches the controller's current limit on this drum. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
+<li><strong>V1:</strong> V1 is the current design. An APS 8072S outrunner turns a 1 in drum through one bought coupling, with no belt or gear. The frame is a box of five 3/8 in 6061 plates; the covers and the deck are printed. An ODrive Pro drives the motor from two 5S LiPo packs in series behind a BMS and a 60 A fuse, and the packs take the energy back when the weight is lowered. A Raspberry Pi 4 with a 4 in touchscreen and a small control board with a Teensy 4.0 run it. The rope winds in one even layer behind a geared rope guide and leaves through an exit that swivels on two bearings; it is drawn to touch only metal on the way out.The rack mount is a quick release: two 1 in pins hold it on the upright, the unit hangs on four studs and a spring latch locks it. 180 lb is the design target: it is about where the calculation reaches the controller's current limit on this drum. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
 <li><strong>V1 (220 battery):</strong> V1 with the stronger motor. A Hobbywing V11130 sits in a cage on a wider motor plate at V1's motor end, a Flipsky 75200 stands behind the packs in a longer end cap, and a small encoder board takes the ODrive's place. Everything else is V1's: the same parts in the same places. It is a shape-and-fit first look: V1's coupling, shaft, drum, bearings and plates have only been calculated at V1's load, the motor's heat is not calculated, the controller's mount is a place-holder and the handle has no place yet. 220 lb is the target the build is named for, not a result. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
 <li><strong>V1 wall power (220):</strong> V1 with the battery taken out. A Mean Well 1,000 W supply sits in a box on the floor and feeds 48 V to V1's port. With no battery to take the energy when the weight is lowered, a regen clamp and two brake resistors on an aluminum bracket turn it into heat. Everything else is V1's: the same parts in the same places. It is a shape-and-fit first look: nothing in it has been calculated at 220 lb, and the supply limits how fast the weight can be reeled in under load (not yet recalculated for this drum). Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
-<li><strong>V1 budget wall power:</strong> V1 with the costly electronics left out. No packs, no Pi, no screen and no ODrive Pro: an ODESC V4.2 on an aluminum bracket with two brake resistors drives the motor, a small encoder board reads the drum shaft, a XIAO ESP32-C3 takes the control board's place, and a knob sits where the screen was. A Mean Well 600 W supply sits in a box on the floor. Everything else is V1's: the same parts in the same places. It is a shape-and-fit first look: the ODESC's current limit is the seller's figure and unconfirmed, so this build has no pull figure yet, and the 600 W supply limits how fast the weight can be reeled in. Its app does not exist yet. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
+<li><strong>V1 budget wall power:</strong> V1 with the costly electronics left out. No packs, no Pi, no screen and no ODrive Pro: an ODESC V4.2 on an aluminum bracket with two brake resistors drives the motor, a small encoder board reads the drum shaft, a XIAO ESP32-C3 takes the control board's place, and a knob sits where the screen was. A Mean Well 600 W supply sits in a box on the floor. Everything else is V1's: the same parts in the same places. It is a shape-and-fit first look: the ODESC's current limit is the seller's figure and unconfirmed, so its 180 lb is a target that waits on a bench test, and the 600 W supply limits how fast the weight can be reeled in. Its app does not exist yet. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
 <li><strong>V1 wall mount (300):</strong> V1 turned to hang on a wall, with its rope wheels facing up. A wall kit of aluminum bars, straps and a shelf takes the place of the rack mount and bolts to two studs with eight lag screws. It has the V11130 motor on a wider motor plate, a Flipsky 75200 on the wall kit, a regen clamp with two brake resistors, and a 1,000 W supply on the floor. Everything else is V1's: the same parts in the same places. It is a shape-and-fit first look: V1's coupling, shaft, drum, bearings and plates have only been calculated at V1's load, far below this build's target, and they will need to change before 300 lb is more than a name. The wall itself is yours to check. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.</li>
 </ul>
 <p>Direct drive only: the motor turns the drum through one coupling, with no belt or gear between them. Nothing is welded or

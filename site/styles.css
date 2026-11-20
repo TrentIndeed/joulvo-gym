@@ -74,9 +74,33 @@ body{overflow-x:clip}
 .lineup-card dl div{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
 .lineup-card dt{color:var(--faint);font-weight:600}
 .lineup-card dd{margin:0;color:var(--ink)}
-.lineup-price{margin-top:auto;padding-top:12px}
-.lineup-price strong{display:block;font-size:34px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
-.lineup-price span{font-size:12px;color:var(--muted)}
+.lineup-price{margin-top:auto;padding-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lineup-price p{min-width:0}
+.lineup-price strong{display:block;font-size:30px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.lineup-price p:first-child strong{color:var(--accent-strong)}
+.lineup-price span{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+.lineup-plan{font-size:13px;color:var(--ink);border-left:2px solid var(--blue);padding-left:10px}
+.build-pair{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:auto;padding-top:10px}
+.build-pair .build-total{margin-top:0;padding-top:0;font-size:26px}
+.build-pair .build-total small{display:block;margin-left:0}
+.build-pair .build-total:first-child{color:var(--accent-strong)}
+.summary-pair{display:flex;flex-wrap:wrap;gap:8px 44px}
+.summary-pair p:first-child strong{color:var(--accent-strong)}
+.summary-pair small{display:block}
+/* the screen-reader labels in the parts table are absolutely positioned: without a positioned scroll box they sat outside it and made the page scroll sideways on phones */
+.table-scroll{position:relative}
+.compare-scroll{margin-bottom:10px}
+.compare{width:100%;border-collapse:collapse;font-size:15px}
+.compare th,.compare td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.compare small{display:block;font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--faint);margin-top:2px}
+.compare .num strong{font-size:22px;font-variant-numeric:tabular-nums}
+.compare td.num:nth-child(2) strong{color:var(--accent-strong)}
+.compare tbody th{font-weight:600;white-space:nowrap}
+.compare tbody th a{color:var(--ink)}
+.compare .c-res small{display:none}
+/* phones: one block per build (name, then resistance beside the price, then power and mount), each value labelled */
+@media(max-width:640px){.compare thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.compare,.compare tbody{display:block}.compare tr{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding:16px 2px;border-bottom:1px solid var(--line)}.compare tbody th,.compare td{display:block;padding:0;border:0;background:none}.compare tbody th{grid-column:1/-1;white-space:normal;font-size:17px}.compare td::before{content:attr(data-label);display:block;margin-bottom:3px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}.compare .c-res{order:1}.compare .c-price{order:2}.compare .c-pow{order:3;font-size:14px}.compare .c-mnt{order:4;font-size:14px}.compare .c-res small{display:block}.compare .num strong{font-size:26px}.compare-scroll{overflow:visible}}
 .lineup-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px}
 .lineup-actions .button{min-height:44px}
 .look-builds{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}

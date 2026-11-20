@@ -82,7 +82,9 @@ button, input, textarea, select { font: inherit; color: inherit }
 .lineup-card strong { font-family: var(--display); font-size: 28px; font-weight: 600; line-height: 1.1 }
 .lineup-what { color: var(--ink); font-size: 16px; line-height: 1.4 }
 .lineup-fact { color: var(--muted); font-size: 14px; line-height: 1.4 }
-.lineup-price { margin-top: auto; padding-top: 12px; font-family: var(--display); font-size: 34px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums }
+.lineup-pair { margin-top: auto; padding-top: 12px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px }
+.lineup-price.res { color: var(--accent-strong) }
+.lineup-price { font-family: var(--display); font-size: 32px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums }
 .lineup-price small { display: block; font-family: var(--body); font-size: 12px; font-weight: 500; color: var(--muted); margin-top: 4px }
 .lineup-note { margin-top: 22px; font-size: 13px; color: var(--faint); max-width: 90ch }
 .lineup-fallback { color: var(--muted) }

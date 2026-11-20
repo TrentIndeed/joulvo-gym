@@ -4,6 +4,8 @@
 > swapping a few parts (a larger motor, wall power, a budget build and a wall mount). V1 is drawn in CAD and still under
 > review; the other four are shape-and-fit first looks. A 3D-printed prototype of the earlier design (V0) is on the bench.
 > Nothing is built in metal or load-tested, and every number published so far is a design estimate.
+>
+> **The order:** V1 at 180 lb first; the 220 lb build becomes the main build after. Both figures are design targets.
 
 ## Where things stand
 
@@ -14,7 +16,8 @@
 | Printed fit test of the whole assembly | done, on the earlier design |
 | Printed prototype of the earlier design (V0) with the real motor and electronics: wiring, software, low-force tests | on the bench |
 | Bench tests: the motors' torque against current, the controllers' currents through a set, motor heat | next |
-| V1 in aluminum (APS 8072S, 10S battery) | next |
+| V1 in aluminum (APS 8072S, 10S battery, 180 lb design target) | next |
+| V1 (220 battery) as the main build (220 lb design target) | after V1 is built; today a first look |
 | Load testing: static load in steps, then powered tests and thermal checks | after the build |
 | Verified release: CAD, build files and software | after load testing |
 | Metal kits made by Trent, the project's maker | after the verified release |

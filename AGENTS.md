@@ -52,17 +52,19 @@ Never commit these files, and never print or quote what is in them.
 The V1 lineup was prepared on November 20, 2026 (branch `site-v1-lineup-2026-11-20`). It replaces the October 27 lineup (Main,
 Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
 
-| Build | Data id | Status | Pull shown | Motor, controller, power | Priced lines on November 20 |
+| Build | Data id | Status | Resistance shown (always "design target, not built or tested") | Motor, controller, power | Priced lines on November 20 |
 |---|---|---|---|---|---|
-| V1 | `v1` (`default`) | CAD, not built yet | up to about 180 lb (design estimate) | APS 8072S, ODrive Pro, 10S battery | $1,635.71, 5 lines to come |
-| V1 (220 battery) | `v1-220-battery` | CAD first look | 220 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 10S battery | $1,984.70, 8 to come |
-| V1 wall power (220) | `v1-wall-power-220` | CAD first look | 220 lb is the design target; not yet calculated | APS 8072S, ODrive Pro and regen clamp, 1,000 W supply | $1,706.14, 6 to come |
-| V1 budget wall power | `v1-budget-wall-power` (`lead`) | CAD first look | to come | APS 8072S, ODESC V4.2, 600 W supply | $1,070.58, 7 to come |
-| V1 wall mount (300) | `v1-wall-mount-300` | CAD first look | 300 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 1,000 W supply | $2,030.27, 10 to come |
+| V1 | `v1` (`default`) | CAD, not built yet | 180 lb | APS 8072S, ODrive Pro, 10S battery | $1,635.71, 5 lines to come |
+| V1 (220 battery) | `v1-220-battery` | CAD first look | 220 lb; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 10S battery | $1,984.70, 8 to come |
+| V1 wall power (220) | `v1-wall-power-220` | CAD first look | 220 lb; not yet calculated | APS 8072S, ODrive Pro and regen clamp, 1,000 W supply | $1,706.14, 6 to come |
+| V1 budget wall power | `v1-budget-wall-power` (`lead`) | CAD first look | 180 lb; waits on a bench test of its controller | APS 8072S, ODESC V4.2, 600 W supply | $1,070.58, 7 to come |
+| V1 wall mount (300) | `v1-wall-mount-300` | CAD first look | 300 lb; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 1,000 W supply | $2,030.27, 10 to come |
 
 - V1 is the design. The other four are V1 with a few parts swapped; they are shape-and-fit first looks.
-- Nothing is built in metal or load-tested. The site states no load rating: V1's figure is a design estimate and the 220 and 300
-  in the names are design targets.
+- Nothing is built in metal or load-tested. The site states no load rating: every resistance is shown as a design target, next
+  to the build's price, on every card and parts section.
+- V1 at 180 lb is built first. The 220 lb battery build is planned to become the main build after it: don't present it as the
+  current design until the owner says so.
 - The drive is direct: there is no belt or gear between the motor and the drum.
 - The reference pages `build`, `wiring`, `printing`, `modifying`, `firmware-setup`, `cnc-build-preview` and `SAFETY` still
   describe the October design. Each carries a notice at the top saying so. Rewrite one only from the current private sources.
@@ -85,7 +87,7 @@ done
 | Key | What it holds |
 |---|---|
 | `project` | The revision label and the data's date. |
-| `motors` | The builds: `id`, `label`, `status`, `tagline`, `force`, `facts` (the key numbers on its card, each labelled as an estimate or a target), `controller`, `power`, `size`, `note` and `images` (its four pictures). `default` marks V1 and `lead` the lowest-cost build. |
+| `motors` | The builds: `id`, `label`, `status`, `tagline`, `force` (the resistance, shown beside the price on every card, the comparison table and the total box) with `force_note` (its label, "design target, not built or tested"), `plan` (optional: where the build stands in the build order), `facts` (the key numbers on its card, each labelled as an estimate or a target), `controller`, `power`, `size`, `note` and `images` (its four pictures). `default` marks V1 and `lead` the lowest-cost build. |
 | `planned` | Empty since November 20 (it held builds shown with no total). |
 | `parts` | The main list, by group (`rank` is its order). Each part has `id`, `name`, `category`, `qty`, `price` (USD, or `null`), `note`, `url`, `status` (`Source price`, `Recorded price`, `Estimate` or `Price to come`) and `date`. Its `motor` field lists the build ids it belongs to; a part with no `motor` field belongs to every build. A `null` price is "price to come": the part is listed and left out of the total. |
 | `accessories` | Things a builder may already own (tools, filament, wire, assortments). They are not counted in the total. |

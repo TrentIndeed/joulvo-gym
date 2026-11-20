@@ -36,13 +36,15 @@ V1 is the current design: an off-the-shelf motor turns a 1 in drum directly, wit
 five 3/8 in aluminum plates. Nothing is welded or turned on a lathe. The other four builds are V1 with a few parts swapped.
 Parts lists and prices so far are on the [build preview](https://kinetiqgym.com/build#parts).
 
-| Build | Status | Pull | Motor and controller | Power | Mount |
+| Build | Status | Resistance (design target, not built or tested) | Motor and controller | Power | Mount |
 |---|---|---|---|---|---|
-| V1 | CAD, not built yet | up to about 180 lb (design estimate) | APS 8072S, ODrive Pro | 10S battery (2 x 5S LiPo) | rack upright, quick release |
-| V1 (220 battery) | CAD first look | 220 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 10S battery | rack upright |
-| V1 wall power (220) | CAD first look | 220 lb is the design target; not yet calculated | APS 8072S, ODrive Pro with a regen clamp | 48 V, 1,000 W wall supply | rack upright |
-| V1 budget wall power | CAD first look | to come | APS 8072S, ODESC V4.2 | 48 V, 600 W wall supply | rack upright |
-| V1 wall mount (300) | CAD first look | 300 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 48 V, 1,000 W wall supply | wall studs |
+| V1 | CAD, not built yet | 180 lb | APS 8072S, ODrive Pro | 10S battery (2 x 5S LiPo) | rack upright, quick release |
+| V1 (220 battery) | CAD first look | 220 lb; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 10S battery | rack upright |
+| V1 wall power (220) | CAD first look | 220 lb; not yet calculated | APS 8072S, ODrive Pro with a regen clamp | 48 V, 1,000 W wall supply | rack upright |
+| V1 budget wall power | CAD first look | 180 lb; waits on a bench test of its controller | APS 8072S, ODESC V4.2 | 48 V, 600 W wall supply | rack upright |
+| V1 wall mount (300) | CAD first look | 300 lb; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 48 V, 1,000 W wall supply | wall studs |
+
+V1 at 180 lb is built first. The 220 lb battery build is planned to become the main build after it.
 
 Nothing is built in metal or load-tested, so there are no ratings here: every number is a design estimate. The motors' torque
 against current and the controllers' currents are still to be bench-tested. The reference pages under `docs/` still describe
