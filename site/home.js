@@ -67,6 +67,28 @@ if (interest) {
   $('#interest-skip').addEventListener('click', () => thanks('Thanks. You will hear about each stage of the build.'));
 }
 
+// the lineup: one card per build, from the same data the build preview uses (data/project.json), so the two pages cannot disagree
+const lineup = $('#home-lineup');
+if (lineup) fetch('data/project.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(d => {
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const usd = n => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  const mine = id => d.parts.filter(p => !p.motor || p.motor.includes(id));
+  const fact = (m, k) => (m.facts.find(f => f[0] === k) || [])[1] || '';
+  lineup.innerHTML = d.motors.map(m => {
+    const parts = mine(m.id), come = parts.filter(p => p.price === null).length;
+    const total = parts.filter(p => p.price !== null).reduce((a, p) => a + Math.round(p.price * 100) * p.qty, 0) / 100;
+    return `<a class="lineup-card${m.default ? ' current' : ''}" href="/build?motor=${encodeURIComponent(m.id)}#lineup">
+      <figure><img src="${esc(m.images['covers-on'])}" width="1600" height="1000" loading="lazy" alt="${esc(m.label)}: CAD preview picture of the unit with its covers on"><figcaption>CAD preview picture, to be re-rendered</figcaption></figure>
+      <span class="lineup-state">${esc(m.status)}${m.default ? ' · the current design' : m.lead ? ' · lowest cost' : ''}</span>
+      <strong>${esc(m.label)}</strong>
+      <span class="lineup-what">${esc(m.tagline)}</span>
+      <span class="lineup-fact">${esc(fact(m, 'Motor'))} · ${esc(fact(m, 'Power'))}</span>
+      <span class="lineup-fact">Pull: ${esc(fact(m, 'Pull'))}</span>
+      <span class="lineup-price">${usd(total)}<small>in priced parts so far${come ? ` · ${come} ${come === 1 ? 'line' : 'lines'} to come` : ''}</small></span>
+    </a>`;
+  }).join('');
+}).catch(() => { /* the fallback link to the build preview stays */ });
+
 // work.html: the project form
 const contact = $('#contact');
 if (contact) contact.addEventListener('submit', async e => {

@@ -28,7 +28,7 @@ are published only after the prototype has been built and load-tested.
 | `site/data/parts.csv` | The same lists, as a download. |
 | `site/data/community.json` | The donation link and the support wording. |
 | `site/llms.txt`, `site/robots.txt` | An optional feedback invitation for AI visitors. Each page's `<head>` links to it; `node tools/add-agent-discovery.mjs` adds that link to new pages. |
-| `site/media/` | The renders, the film and the logo. |
+| `site/media/` | The renders, the film and the logo. `site/media/builds/` holds one picture set per build (`<build id>-covers-on`, `-covers-off`, `-exit`, `-mount`): quick previews from the CAD, to be replaced by final renders once the owner signs them off. `site/media/launch/hero-v1-preview.mp4` is a preview too. |
 | `src/worker.js` | The Worker: the two forms (stored in D1) and byte-range replies so the videos can be scrubbed. |
 | `src/agent-feedback.js`, `src/agent-inbox-page.js` | The AI-visitor feedback endpoint and the owner's private inbox, stored in Workers KV. See `docs/agent-feedback.md`. |
 | `db/schema.sql` | The D1 tables: `signups`, `enquiries` and `rate`. |
@@ -49,18 +49,25 @@ Never commit these files, and never print or quote what is in them.
 
 ### What is live now
 
-The current lineup was deployed on October 27, 2026 (PR #30). On October 29, `main` matched the live site. The site offers two
-builds you can choose and shows one more as in design:
+The V1 lineup was prepared on November 20, 2026 (branch `site-v1-lineup-2026-11-20`). It replaces the October 27 lineup (Main,
+Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
 
-| Build | Data id | Max rope force | Motor, controller, power | Total on the site |
-|---|---|---|---|---|
-| Budget build | `budget180` (`lead`) | 180 lb | MP8085, ODESC V4.2, 48 V wall supply | about $864 ($864.09) |
-| Main build | `main220` (`default`) | 220 lb | MP8085, ODrive Pro, 10S battery | $1,724.08 if you cut the metal yourself; $1,848-2,083 with the metal made |
-| Wall build | `wall300` (in `planned`) | 300 lb | Hobbywing XRotor V11130, Flipsky 75200, 1,000 W supply | none: shown as "in design" |
+| Build | Data id | Status | Pull shown | Motor, controller, power | Priced lines on November 20 |
+|---|---|---|---|---|---|
+| V1 | `v1` (`default`) | CAD, not built yet | up to about 180 lb (design estimate) | APS 8072S, ODrive Pro, 10S battery | $1,635.71, 5 lines to come |
+| V1 (220 battery) | `v1-220-battery` | CAD first look | 220 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 10S battery | $1,984.70, 8 to come |
+| V1 wall power (220) | `v1-wall-power-220` | CAD first look | 220 lb is the design target; not yet calculated | APS 8072S, ODrive Pro and regen clamp, 1,000 W supply | $1,706.14, 6 to come |
+| V1 budget wall power | `v1-budget-wall-power` (`lead`) | CAD first look | to come | APS 8072S, ODESC V4.2, 600 W supply | $1,070.58, 7 to come |
+| V1 wall mount (300) | `v1-wall-mount-300` | CAD first look | 300 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200, 1,000 W supply | $2,030.27, 10 to come |
 
-- Every force is a design target, held through a 20-30 s set, and none has been verified yet.
+- V1 is the design. The other four are V1 with a few parts swapped; they are shape-and-fit first looks.
+- Nothing is built in metal or load-tested. The site states no load rating: V1's figure is a design estimate and the 220 and 300
+  in the names are design targets.
 - The drive is direct: there is no belt or gear between the motor and the drum.
-- No other builds are on the site: no Lite, no hoverboard build and no hub-motor build. Don't add one back unless the owner asks.
+- The reference pages `build`, `wiring`, `printing`, `modifying`, `firmware-setup`, `cnc-build-preview` and `SAFETY` still
+  describe the October design. Each carries a notice at the top saying so. Rewrite one only from the current private sources.
+- No other builds are on the site: no Main, Budget or Wall build, no Lite, no hoverboard build and no hub-motor build. Don't add
+  one back unless the owner asks.
 
 To check that the live site still matches your checkout, run this in bash (Git Bash on Windows). The two hashes on each line
 should be equal:
@@ -78,19 +85,21 @@ done
 | Key | What it holds |
 |---|---|
 | `project` | The revision label and the data's date. |
-| `motors` | The builds a visitor can pick: `id`, `label`, `force`, `controller`, `power`, `size` and `note`. `lead` marks the lowest-cost build and `default` the main build. |
-| `planned` | Builds in design. Each is shown as a card with no total. |
-| `parts` | The main list, ranked by importance (`rank`). Each part has `id`, `name`, `category`, `qty`, `price` (USD), `note`, `url`, `status` (`Source price`, `Estimate` or `Recorded price`) and `date`. Its `motor` field lists the build ids it belongs to; a part with no `motor` field belongs to both builds. |
+| `motors` | The builds: `id`, `label`, `status`, `tagline`, `force`, `facts` (the key numbers on its card, each labelled as an estimate or a target), `controller`, `power`, `size`, `note` and `images` (its four pictures). `default` marks V1 and `lead` the lowest-cost build. |
+| `planned` | Empty since November 20 (it held builds shown with no total). |
+| `parts` | The main list, by group (`rank` is its order). Each part has `id`, `name`, `category`, `qty`, `price` (USD, or `null`), `note`, `url`, `status` (`Source price`, `Recorded price`, `Estimate` or `Price to come`) and `date`. Its `motor` field lists the build ids it belongs to; a part with no `motor` field belongs to every build. A `null` price is "price to come": the part is listed and left out of the total. |
 | `accessories` | Things a builder may already own (tools, filament, wire, assortments). They are not counted in the total. |
-| `outsourced` | The have-it-made ranges (`low`, `high`) for each build, such as the main build's cut plates. |
+| `outsourced` | A recorded have-it-made price (`low`, `high`), such as the five box plates laser cut. |
+| `fasteners` | V1's screw table (count and size), shown in the BOM. |
 
-A build's total is `price x qty` summed over the `parts` that list its id or have no `motor`. To print both totals:
+A build's total is `price x qty` summed over its priced `parts` (those that list its id or have no `motor`). To print the totals:
 
 ```sh
-python -c "import json; d=json.load(open('site/data/project.json', encoding='utf-8')); [print(b, round(sum(p['price']*p['qty'] for p in d['parts'] if not p.get('motor') or b in p['motor']), 2)) for b in ('budget180', 'main220')]"
+python -c "import json; d=json.load(open('site/data/project.json', encoding='utf-8')); [print(m['id'], round(sum(p['price']*p['qty'] for p in d['parts'] if p['price'] is not None and (not p.get('motor') or m['id'] in p['motor'])), 2), sum(1 for p in d['parts'] if p['price'] is None and (not p.get('motor') or m['id'] in p['motor'])), 'to come') for m in d['motors']]"
 ```
 
-On October 29 it printed `budget180 864.09` and `main220 1724.08`.
+On November 20 it printed `v1 1635.71 5 to come`, `v1-220-battery 1984.7 8 to come`, `v1-wall-power-220 1706.14 6 to come`,
+`v1-budget-wall-power 1070.58 7 to come` and `v1-wall-mount-300 2030.27 10 to come`.
 
 Rules for changing the lists:
 - **Part ids:** keep each part's id. A visitor's own prices are saved in their browser by part id, so a new part gets a new id.
@@ -100,6 +109,7 @@ Rules for changing the lists:
 - **Sources:** well-reviewed Amazon listings or ServoCity, from US sellers. Don't use parts that need a quote or take a long time to
   ship from overseas; the motors and controllers are the exception. If you use another source, say why in the note.
 - **Status and date:** every price has a `status` and a `date`. Prices are planning figures, not quotes or live stock.
+- **Never invent a price.** A part with no price on record is `null` ("price to come"), not a guess.
 
 ### `site/data/parts.csv` and `bom/BOM.md`
 
@@ -127,7 +137,9 @@ Python scripts in the owner's private repo generate these files. They are not in
 - `bom/BOM.md`, from `project.json`;
 - the doc HTML, from the Markdown.
 
-On the owner's PC they live in the private repo's `site_tools` folder, with a README that says how to run them. If you don't have
+On the owner's PC they live in the private repo's `site_tools` folder, with a README that says how to run them
+(`make_site_data_v1.py`, `make_bom_v1.py` and `render_docs2.py` since November 20: the lists follow the current V1 model and
+the lineup models). If you don't have
 access, tell the owner what should change so the files can be generated again. If you must edit by hand:
 1. Change `project.json`.
 2. Make `parts.csv`, both copies of `BOM.md` and the affected doc HTML match it.
@@ -236,13 +248,18 @@ The AI-visitor inbox (`/owner/agent-replies`) is for the owner only:
 7. **The licence is open and the name is protected.** At the verified release the hardware is CERN-OHL-S-2.0, the documentation
    CC BY-SA 4.0 and the software GPL-3.0. The KINETIQ and Kinetiq Gym names and logo are not licensed: only the owner sells kits
    and machines under them. Don't weaken `LICENSE.md` or remove the name reservation.
-8. **Use plain build names:** Main build, Budget build, Wall build.
-   - Never use internal codes such as revision, round or draft numbers.
-   - Never use dropped names such as Lite, hoverboard or hub-motor builds.
-   - The ids `main220`, `budget180` and `wall300` stay as data ids only.
+8. **Use the owner's build names:** V1, V1 (220 battery), V1 wall power (220), V1 budget wall power, V1 wall mount (300). V0 is
+   the owner's printed prototype of the earlier design: it may be named as a stage of the project, never offered as a build.
+   - Never use internal codes such as review, revision, round or draft numbers.
+   - Never use dropped names for a current build: Main, Budget or Wall build, Lite, hoverboard or hub-motor builds. The
+     October reference pages keep "main build" and "budget build" under their notice until they are rewritten.
+   - The rope exits are the "CNC exit" and the "DIY exit".
+   - The ids `v1`, `v1-220-battery`, `v1-wall-power-220`, `v1-budget-wall-power` and `v1-wall-mount-300` are data ids only.
 9. **Prices and claims match the current private parts lists.** Before you change a price, a size, a force or a feature, compare it
    with the current list (see [Private sources](#private-sources-of-truth-on-the-owners-pc)).
-   - Claims stay "designed to", "design target" or "est." until they are tested.
+   - Claims stay "designed to", "design estimate", "design target" or "est." until they are tested, and a build that exists
+     only in CAD is labelled so ("CAD, not built yet"). State no load rating anywhere.
+   - A picture that is not a final render is labelled as a preview.
    - Nothing is described as tested, load-tested, proven, certified, safe, in stock or for sale.
    - Kits are only "planned".
 

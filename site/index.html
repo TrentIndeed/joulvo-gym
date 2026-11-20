@@ -32,8 +32,9 @@
 <main id="main">
   <!-- A. hero: the film is the image -->
   <section class="hero" aria-labelledby="hero-title">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/launch/hero-poster.webp" aria-hidden="true">
-      <source src="media/launch/hero-loop.mp4" type="video/mp4">
+    <!-- November 20: the hero shows V1. This loop is a low-quality preview (an upscale), to be replaced by the final render. -->
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/launch/hero-v1-preview-poster.webp" aria-hidden="true">
+      <source src="media/launch/hero-v1-preview.mp4" type="video/mp4">
     </video>
     <div class="wrap">
       <p class="status-tag">Open hardware · in development</p>
@@ -45,7 +46,7 @@
         <a class="text-link" href="#support">Support the project <span aria-hidden="true">→</span></a>
           <a class="text-link" href="#community">Join the community <span aria-hidden="true">→</span></a>
       </div>
-      <p class="render-note">Renders of the engineered design. The first physical prototype is being built now.</p>
+      <p class="render-note">Preview render of V1, the current design. It exists in CAD only: nothing is built in metal or load-tested yet.</p>
     </div>
   </section>
 
@@ -55,15 +56,26 @@
       <div>
         <p class="kicker" id="what-title">What Kinetiq does</p>
         <p class="positioning">A programmable digital-resistance platform, built as open hardware for people who want to train with it, build it, modify it, and program it.</p>
-        <figure class="what-fig"><img src="media/launch/gears.webp" width="1400" height="788" loading="lazy" alt="Close-up render of the drum's 81-tooth gear driving the lead screw's 45-tooth gear, with the braided rope wound on the drum"><figcaption>The drum drives the lead screw through an 81 / 45 gear pair, moving the cable guide in step with the drum.</figcaption></figure>
+        <figure class="what-fig"><img src="media/launch/gears.webp" width="1400" height="788" loading="lazy" alt="Close-up render of the drum's 81-tooth gear driving the lead screw's 45-tooth gear, with the braided rope wound on the drum"><figcaption>The drum drives a lead screw through a gear pair, moving the rope guide in step with the drum. Render of the earlier design (81 / 45 teeth); V1 keeps the ratio with 27 / 15.</figcaption></figure>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><strong>Programmable resistance</strong><span class="d">A motor and a cable drum stand in for the weight stack, so the load is set in software.</span></div></li>
-        <li><span class="n">02</span><div><strong>Planned mounts, adjustable cable direction</strong><span class="d">Mounts are planned for a rack upright at any height, a wall, the floor, and a pole or tree, all on the same quick release, and builders can design their own. The cable exit swivels to follow the pull.</span></div></li>
+        <li><span class="n">02</span><div><strong>Mounts, and a rope exit that follows the pull</strong><span class="d">V1 hangs on a rack upright at any height, on a quick release. A wall mount is a first drawing; floor and pole mounts are planned, and builders can design their own. The rope exit swivels to follow the pull.</span></div></li>
         <li><span class="n">03</span><div><strong>Software-defined training modes</strong><span class="d">Eccentric, chain-style and band-style resistance are designed as modes, not attachments.</span></div></li>
-        <li><span class="n">04</span><div><strong>Customizable hardware</strong><span class="d">Bolted aluminum frames on stock motors, battery or wall-outlet power, and documented interfaces for your own.</span></div></li>
+        <li><span class="n">04</span><div><strong>Customizable hardware</strong><span class="d">One bolted aluminum frame, stock motors, battery or wall-outlet power: the lineup is V1 with a few parts swapped, and the interfaces are documented for your own.</span></div></li>
         <li><span class="n">05</span><div><strong>Local, hackable architecture</strong><span class="d">Designed to run on its own controller and a Raspberry Pi, with no account or cloud service in the loop.</span></div></li>
       </ol>
+    </div>
+  </section>
+
+  <!-- B2. the lineup (November 20): one card per build, filled from data/project.json by home.js -->
+  <section class="section" id="lineup" aria-labelledby="lineup-title">
+    <div class="wrap">
+      <p class="kicker">The lineup</p>
+      <h2 id="lineup-title">One design. Five builds.</h2>
+      <p class="lineup-lede">V1 is the current design. The other four are V1 with a few parts swapped: a larger motor, wall power, a budget build and a wall mount. All of it is CAD: nothing is built in metal or load-tested, and every number is a design estimate.</p>
+      <div class="lineup" id="home-lineup"><p class="lineup-fallback">The builds are on the <a href="/build#lineup">build preview</a>.</p></div>
+      <p class="lineup-note">Quick preview pictures from the CAD, at the same scale; final renders come later. “Priced so far” leaves out the parts whose price is still to come. <a href="/build#lineup">Compare the builds in detail →</a></p>
     </div>
   </section>
 
@@ -79,7 +91,7 @@
           <a href="media/launch/kinetiq-film.mp4">Watch the 1-minute concept</a>
         </video>
       </div>
-      <p class="caption">This animation shows the current engineered design and planned user experience. The next step is proving the architecture in the full physical prototype.</p>
+      <p class="caption">This animation was made on the earlier design and shows the planned user experience. V1, the current design, keeps the same mechanism in a new frame. The next step is proving it in a physical prototype.</p>
     </div>
   </section>
 
@@ -89,9 +101,9 @@
       <p class="kicker">Current build status</p>
       <h2 id="status-title">What is real today, and what comes next.</h2>
       <ol class="track">
-        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">Finalizing</span><h3>Design and animation</h3><p>The aluminum build in CAD with a choice of stock motors and power setups, and the 1-minute animation of how the machine is meant to work.</p></li>
-        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">Done</span><h3>Printed fit test</h3><p>Every part printed and fitted against the design, to catch CAD mistakes before any metal is cut.</p></li>
-        <li class="now"><span class="dot" aria-hidden="true"></span><span class="state">Parts on order · build next</span><h3>Aluminum prototype</h3><p>The machined 6061 frame, bolted together with no welding, with the real battery and BMS. Proves the mechanics, cable routing, force control, safety and assembly.</p></li>
+        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">In review</span><h3>V1 design</h3><p>V1 is drawn in CAD: one bolted aluminum frame, with a lineup of motor and power choices that follow it. It is still being reviewed and changed.</p></li>
+        <li class="now"><span class="dot" aria-hidden="true"></span><span class="state">On the bench</span><h3>Printed prototype (V0)</h3><p>The earlier design, 3D-printed and fitted with the real motor and electronics, to catch mistakes and try the wiring and software at low force before any metal is cut.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="state">Next</span><h3>V1 in aluminum</h3><p>The 6061 plate frame, bolted together with no welding, with the real battery and BMS. Proves the mechanics, rope routing, force control, safety and assembly.</p></li>
         <li><span class="dot" aria-hidden="true"></span><span class="state">After testing</span><h3>Verified open files, then kits</h3><p>CAD, parts list, firmware, software, and assembly and safety guides, released together. Kits follow if there is demand.</p></li>
       </ol>
       <div class="bench">
@@ -132,16 +144,16 @@
       <p class="kicker">Where this is going</p>
       <h2 id="paths-title">Build it, buy the hard parts, or work together.</h2>
       <div class="paths">
-        <article class="path"><span class="label">BUILD IT</span><span class="avail">Planned</span><h3>Verified files and documentation.</h3><p>CAD, the parts list, firmware, software and assembly guides, published after the prototype is tested. Parts from about $864 for the budget build, cutting the metal yourself.</p><a class="button ghost" href="#join" data-interest="build">Get the files when they release</a></article>
+        <article class="path"><span class="label">BUILD IT</span><span class="avail">Planned</span><h3>Verified files and documentation.</h3><p>CAD, the parts list, firmware, software and assembly guides, published after the prototype is tested. Each build's parts and prices so far are on the <a href="/build#parts">build preview</a>.</p><a class="button ghost" href="#join" data-interest="build">Get the files when they release</a></article>
         <article class="path"><span class="label">BUY THE HARD PARTS</span><span class="avail">Not available yet</span><h3>Kits and machined parts, if there is demand.</h3><p>Machined plates, printed parts or complete kits may follow the verified release. Nothing is for sale today.</p><a class="button ghost" href="#join" data-interest="kit">Tell me you would want one</a></article>
         <article class="path"><span class="label">WORK TOGETHER</span><span class="avail">Open to select projects</span><h3>Custom mechatronics and prototyping.</h3><p>Robotics, motor control and rapid prototyping work, taken on a few projects at a time.</p><a class="button ghost" href="/work">Discuss a project</a></article>
       </div>
       <div class="kit" id="kits">
-        <figure><img src="media/launch/kit.webp" width="1600" height="900" loading="lazy" alt="Render of the planned metal kit laid out flat: the frame plates, the drum tube and flanges, the rack side, and the machined bearing holders and brackets"><figcaption>The planned metal kit · render, not a product photo</figcaption></figure>
+        <figure><img src="media/launch/kit.webp" width="1600" height="900" loading="lazy" alt="Render of the planned metal kit laid out flat: the frame plates, the drum tube and flanges, the rack side, and the machined bearing holders and brackets"><figcaption>A planned metal kit, shown for the earlier design · render, not a product photo</figcaption></figure>
         <div>
           <p class="kicker">Kits · planned</p>
           <h3>The hard parts, made for you.</h3>
-          <p>The laser-cut and countersunk plates, the milled bearing holders and gussets, and the drum and rack side ready to bolt together: the parts most builders cannot make at home. Printed-part sets and complete machines may follow.</p>
+          <p>The five frame plates, the drum parts, the rope exit and the rack mount, ready to bolt together: the parts most builders cannot make at home. Printed-part sets and complete machines may follow.</p>
           <p class="note">Not for sale yet. Kits open only after the prototype passes load testing, and the waitlist hears first.</p>
           <div class="actions"><a class="button primary" href="#join" data-interest="kit">Join the kit waitlist</a><a class="button ghost" href="/build#parts">See the parts and costs</a></div>
         </div>
@@ -275,7 +287,7 @@
 
 <dialog class="watch" id="watch" aria-label="Kinetiq Gym, the 1-minute concept">
   <video controls playsinline preload="none" poster="media/launch/unit.webp"><source src="media/launch/kinetiq-film.mp4" type="video/mp4"></video>
-  <div class="bar"><span>The 1-minute concept: the engineered design, before physical validation.</span><button type="button" id="watch-close">Close</button></div>
+  <div class="bar"><span>The 1-minute concept, made on the earlier design, before physical validation.</span><button type="button" id="watch-close">Close</button></div>
 </dialog>
 </body>
 </html>

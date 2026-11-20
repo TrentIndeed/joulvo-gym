@@ -1,7 +1,13 @@
 # Safety
 
-**Status: prototype design. It has not been built or load-tested yet.** Treat every number here as a design value until
-your own build has passed the tests below.
+**Status: a design in CAD. Nothing has been built in metal or load-tested yet, and nothing here is a load rating.** Treat
+every number as a design estimate until your own build has passed the tests below.
+
+> **The numbers below are the earlier design's (October 2026).** The current design is V1 (see the
+> [build preview](https://kinetiqgym.com/build)). The hazards are the same on V1 and on the builds that follow it; the
+> parts named below (the drum size, the toggle clamp, the single hitch pin, the fuse) are not. V1's own figures are design
+> estimates, and the builds named for 220 lb and 300 lb have not been calculated at those loads. This page will be
+> rewritten for V1.
 
 ## What can hurt you
 

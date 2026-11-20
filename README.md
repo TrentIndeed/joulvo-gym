@@ -1,16 +1,16 @@
-<p align="center"><a href="https://kinetiqgym.com"><img src="site/media/launch/hero-poster.webp" alt="The Kinetiq Gym unit on a rack upright" width="100%"></a></p>
+<p align="center"><a href="https://kinetiqgym.com"><img src="site/media/builds/v1-covers-on.webp" alt="V1, the current design: a CAD preview picture" width="100%"></a></p>
 
 <h1 align="center">Kinetiq Gym</h1>
 <p align="center"><b>A programmable smart gym, built as open hardware.</b><br>
 <a href="https://kinetiqgym.com">kinetiqgym.com</a> · <a href="https://kinetiqgym.com/build">The build</a> · <a href="https://kinetiqgym.com/build#parts">Parts &amp; cost</a> · <a href="https://kinetiqgym.com/build#software">App</a> · <a href="https://kinetiqgym.com/#support">Support</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="https://kinetiqgym.com/#join">Follow the build &amp; kit waitlist</a></p>
 
-A direct-drive motor turns a rope drum, a geared level-wind lays the rope, and the controller sets the resistance in software.
+A direct-drive motor turns a rope drum, a geared rope guide lays the rope, and the controller sets the resistance in software.
 It mounts on a rack upright. The design is built to be trained with, built, modified and programmed.
 
-> **Status: open hardware in development.** The design is complete in CAD and the printed fit test is done. The aluminum
-> prototype is being built now. **The CAD, build files and software are released after the prototype has been built and
-> load-tested**, so what you download is something that has actually worked. Until then, this repository holds the website,
-> the documentation and the renders.
+> **Status: open hardware in development. CAD only: nothing is built in metal or load-tested yet.** The current design, V1,
+> is drawn in CAD and still under review; a 3D-printed prototype of the earlier design is on the bench. **The CAD, build
+> files and software are released after a prototype has been built and load-tested**, so what you download is something
+> that has actually worked. Until then, this repository holds the website, the documentation and the pictures.
 
 <p align="center"><img src="site/media/launch/inside.webp" alt="Render with the covers shown see-through: the motor, the cable drum, the lead screw and the electronics" width="100%"></p>
 
@@ -19,31 +19,34 @@ It mounts on a rack upright. The design is built to be trained with, built, modi
 | ![The drum's gear driving the level-wind](site/media/launch/gears.webp) | ![The unit on the rack](site/media/launch/rack.webp) |
 | ![The touchscreen](site/media/launch/screen.webp) | ![The planned metal kit](site/media/launch/kit.webp) |
 
-<sub>Renders of an earlier revision of the main build (Blender). The display content is illustrative.</sub>
+<sub>The picture at the top is a quick CAD preview of V1. The renders below show the earlier design (Blender); the display
+content is illustrative.</sub>
 
 ## What it does
 
 - **Programmable resistance:** a motor and a cable drum stand in for the weight stack, so the load is set in software.
 - **Adjustable position:** it hangs on a rack upright at the height you want, and the cable exit swivels to follow the pull.
 - **Training modes in software:** eccentric, chain-style and band-style resistance are designed as modes, not attachments.
-- **Customizable hardware:** two builds on the same stock motor, battery or wall power, and documented interfaces for your own.
+- **Customizable hardware:** one frame with a lineup of stock motors, battery or wall power, and documented interfaces for your own.
 - **Local and hackable:** its own controller and a Raspberry Pi, with no account or cloud service in the loop.
 
 ## The builds
 
-Both builds use an off-the-shelf motor, the Freerchobby MP8085 50 Kv, and the drive is direct: no belt or gear between the motor and
-the drum. Nothing is welded or turned on a lathe, and every load-bearing joint is a bolt and a nut. Current parts lists and prices are
-on the [build preview](https://kinetiqgym.com/build#parts).
+V1 is the current design: an off-the-shelf motor turns a 1 in drum directly, with no belt or gear between them, inside a box of
+five 3/8 in aluminum plates. Nothing is welded or turned on a lathe. The other four builds are V1 with a few parts swapped.
+Parts lists and prices so far are on the [build preview](https://kinetiqgym.com/build#parts).
 
-| Build | Max rope force, held through a set | Controller | Power | Frame |
-|---|---|---|---|---|
-| Main build | 220 lb | ODrive Pro | 10S battery (2 x 5S LiPo) | bolted 6061 plate frame (CNC or laser cut), touchscreen, about 515 mm long |
-| Budget build | 180 lb | ODESC V4.2 | 48 V wall supply in a floor box | plate and angle bought near size, cut with a hacksaw; knob and phone app |
-| Wall build | 300 lb | Flipsky 75200 (VESC), Hobbywing XRotor V11130 motor | 1,000 W wall supply | in design: bolts to wall studs or concrete; parts list once the CAD is done |
+| Build | Status | Pull | Motor and controller | Power | Mount |
+|---|---|---|---|---|---|
+| V1 | CAD, not built yet | up to about 180 lb (design estimate) | APS 8072S, ODrive Pro | 10S battery (2 x 5S LiPo) | rack upright, quick release |
+| V1 (220 battery) | CAD first look | 220 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 10S battery | rack upright |
+| V1 wall power (220) | CAD first look | 220 lb is the design target; not yet calculated | APS 8072S, ODrive Pro with a regen clamp | 48 V, 1,000 W wall supply | rack upright |
+| V1 budget wall power | CAD first look | to come | APS 8072S, ODESC V4.2 | 48 V, 600 W wall supply | rack upright |
+| V1 wall mount (300) | CAD first look | 300 lb is the design target; not yet calculated | Hobbywing XRotor V11130, Flipsky 75200 | 48 V, 1,000 W wall supply | wall studs |
 
-Every rating is a design target held through a 20-30 s set, not yet verified: the motor's torque against current and the
-controllers' currents are still to be bench-tested, and nothing is load-tested yet. The 10 lb minimum is designed to feel like
-10 lb: the drums are kept small and light and the firmware cancels part of the motor's inertia.
+Nothing is built in metal or load-tested, so there are no ratings here: every number is a design estimate. The motors' torque
+against current and the controllers' currents are still to be bench-tested. The reference pages under `docs/` still describe
+the earlier design (October 2026) and are marked so; they are rewritten for V1 as it is confirmed.
 
 ## In this repository
 
@@ -62,7 +65,7 @@ together after testing.
 
 ## Kits
 
-Metal kits (the laser-cut and machined 6061 parts, the drum and the rack side, ready to bolt together) are planned once the
+Metal kits (the frame plates, the drum parts, the rope exit and the rack mount, ready to bolt together) are planned once a
 prototype passes load testing. Nothing is for sale yet. [Join the kit waitlist](https://kinetiqgym.com/#join).
 
 ## Support and contributions

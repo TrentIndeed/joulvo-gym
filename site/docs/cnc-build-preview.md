@@ -1,5 +1,9 @@
 # The build, illustrated
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://kinetiqgym.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 Stills from the build animation of the main build: the bolted aluminum frame, the drum and level-wind, the motor, the
 electronics, the covers and the rack mount. They are renders of an earlier revision, with the previous motor, a larger drum
 and the earlier rack side: the current main build is longer, on the MP8085 motor and a 7/8 in drum. They show the layout and

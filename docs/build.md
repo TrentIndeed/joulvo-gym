@@ -1,5 +1,9 @@
 # Build instructions
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://kinetiqgym.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft build order.** This is the assembly order for the main build as designed now (October 2026). It has not been
 > confirmed on hardware yet. Steps, screw lengths and torques will be checked, corrected and photographed on the
 > prototype, then released with the verified CAD and build files. Read the

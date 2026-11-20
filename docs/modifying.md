@@ -1,5 +1,9 @@
 # Modifying the design
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://kinetiqgym.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft.** The numbers below are design values for the main build as designed now; they are confirmed or corrected after
 > the prototype is load-tested. The editable CAD is released with the verified build files after that. Until then this
 > page describes the interfaces in words and numbers.
