@@ -1,15 +1,18 @@
-// KinetiqGym.com: static site (./site) plus two form endpoints that keep the build list and project enquiries in D1.
+// joulvo.com (formerly kinetiqgym.com): static site (./site) plus two form endpoints that keep the build list and project enquiries in D1.
 //   POST /api/subscribe  { email, interest?, source? }   build-list signup; a second call with the same email adds the interest answer
 //   POST /api/contact    { name, email, company?, message }  "Discuss a project"
 // Tables (db/schema.sql): signups, enquiries, and rate (hashed per-address counters for the forms). They moved from Workers KV, whose
 // free tier allows 1,000 writes a day; a signup took about four. Export with tools/export-signups.mjs. The agent inbox stays in KV.
 import { agentFeedback } from './agent-feedback.js';
+import { hostMove } from './host-move.js';
 
 const INTERESTS = ['build', 'kit', 'complete', 'research', 'engineering'];
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/;
 
 export default {
   async fetch(request, env) {
+    const move = hostMove(request, env);                                // off unless JOULVO_REDIRECTS is "on"
+    if (move) return move;
     const url = new URL(request.url);
     if (url.pathname === '/api/agent-feedback' || url.pathname.startsWith('/api/owner/agent-feedback') || url.pathname.startsWith('/owner/agent-replies')) {
       const response = await agentFeedback(request, env);

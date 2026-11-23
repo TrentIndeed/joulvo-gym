@@ -1,16 +1,20 @@
-<p align="center"><a href="https://kinetiqgym.com"><img src="site/media/builds/v1-covers-on.webp" alt="V1, the current design: a CAD preview picture" width="100%"></a></p>
+<p align="center"><a href="https://joulvo.com"><img src="site/media/builds/v1-covers-on.webp" alt="V1, the current design: a CAD preview picture" width="100%"></a></p>
 
-<h1 align="center">Kinetiq Gym</h1>
-<p align="center"><b>A programmable smart gym, built as open hardware.</b><br>
-<a href="https://kinetiqgym.com">kinetiqgym.com</a> · <a href="https://kinetiqgym.com/build">The build</a> · <a href="https://kinetiqgym.com/build#parts">Parts &amp; cost</a> · <a href="https://kinetiqgym.com/build#software">App</a> · <a href="https://kinetiqgym.com/#support">Support</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="https://kinetiqgym.com/#join">Follow the build &amp; kit waitlist</a></p>
+<h1 align="center">Joulvo Gym</h1>
+<p align="center"><b>The open-source smart gym, in development.</b><br>
+<sub>Formerly Kinetiq Gym. Same project, new name.</sub><br>
+<a href="https://joulvo.com">joulvo.com</a> · <a href="https://joulvo.com/build">The build</a> · <a href="https://joulvo.com/build#parts">Parts &amp; cost</a> · <a href="https://joulvo.com/build#software">App</a> · <a href="https://joulvo.com/#support">Support</a> · <a href="docs/roadmap.md">Roadmap</a> · <a href="https://joulvo.com/#join">Follow the build &amp; kit waitlist</a></p>
 
 A direct-drive motor turns a rope drum, a geared rope guide lays the rope, and the controller sets the resistance in software.
 It mounts on a rack upright. The design is built to be trained with, built, modified and programmed.
 
 > **Status: open hardware in development. CAD only: nothing is built in metal or load-tested yet.** The current design, V1,
-> is drawn in CAD and still under review; a 3D-printed prototype of the earlier design is on the bench. **The CAD, build
+> is drawn in CAD and still under review; a 3D-printed prototype of the earlier design is on the bench. **V1's CAD, build
 > files and software are released after a prototype has been built and load-tested**, so what you download is something
-> that has actually worked. Until then, this repository holds the website, the documentation and the pictures.
+> that has actually worked. For now, this repository holds the website, the documentation and the pictures.
+>
+> V0 is the earlier design, 3D-printed and on the bench. Its design files will be available once a verification pass is done.
+> Building V0 is not recommended: V1 is the version to wait for.
 
 <p align="center"><img src="site/media/launch/inside.webp" alt="Render with the covers shown see-through: the motor, the cable drum, the lead screw and the electronics" width="100%"></p>
 
@@ -34,7 +38,7 @@ content is illustrative.</sub>
 
 V1 is the current design: an off-the-shelf motor turns a 1 in drum directly, with no belt or gear between them, inside a box of
 five 3/8 in aluminum plates. Nothing is welded or turned on a lathe. The other four builds are V1 with a few parts swapped.
-Parts lists and prices so far are on the [build preview](https://kinetiqgym.com/build#parts).
+Parts lists and prices so far are on the [build preview](https://joulvo.com/build#parts).
 
 | Build | Status | Resistance (design target, not built or tested) | Motor and controller | Power | Mount |
 |---|---|---|---|---|---|
@@ -54,32 +58,34 @@ the earlier design (October 2026) and are marked so; they are rewritten for V1 a
 
 | Path | What |
 |---|---|
-| `site/` | kinetiqgym.com: the front page, the build preview, the parts data (`site/data/`) and the reference docs (`site/docs/`) |
-| `src/worker.js` | the Cloudflare Worker behind the site: the build list and the project form |
+| `site/` | joulvo.com (formerly kinetiqgym.com): the front page, the build preview, the parts data (`site/data/`) and the reference docs (`site/docs/`) |
+| `src/worker.js` | the Cloudflare Worker behind the site: the build list, the project form, and the move from kinetiqgym.com (`src/host-move.js`) |
 | `docs/` | build order, wiring, printing, modifying, setup and roadmap (drafts until testing) |
 | `bom/BOM.md` | the bill of materials |
 | `SAFETY.md` | read before building or powering anything |
 | `LICENSE.md`, `LICENSES/` | the licences, and the reserved name and logo |
 | `AGENTS.md` | instructions for AI coding agents working on this repository |
 
-**Not here yet:** CAD (STEP, DXF, editable source), print files, and the Pi, Teensy and phone software. They are released
-together after testing.
+**Not here yet:** CAD (STEP, DXF, editable source), print files, and the Pi, Teensy and phone software. V1's are released
+together after testing. V0's design files will go in their own folder of this repository, with a "not recommended to build" note on
+top. Supplier CAD is never included.
 
 ## Kits
 
-Metal kits (the frame plates, the drum parts, the rope exit and the rack mount, ready to bolt together) are planned once a
-prototype passes load testing. Nothing is for sale yet. [Join the kit waitlist](https://kinetiqgym.com/#join).
+The Joulvo Gym Kit, a metal kit (the frame plates, the drum parts, the rope exit and the rack mount, ready to bolt together) is planned
+once a prototype passes load testing. Nothing is for sale yet. [Join the kit waitlist](https://joulvo.com/#join).
 
 ## Support and contributions
 
 The CNC machine is already in the workshop; support now goes to prototype iterations and build support
-([support the project](https://kinetiqgym.com/#support)). **Contributions are closed until the verified release**: see
+([support the project](https://joulvo.com/#support)). **Contributions are closed until the verified release**: see
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Licence
 
-For the verified release: hardware under CERN-OHL-S-2.0, documentation under CC BY-SA 4.0, software under GPL-3.0. The
-**KINETIQ** and **Kinetiq Gym** names and logo are not licensed: only the maker sells kits and machines under them. Details in
-[LICENSE.md](LICENSE.md).
+For the verified release: hardware under CERN-OHL-S-2.0, documentation under CC BY-SA 4.0, software under GPL-3.0. V0's design
+files come under CERN-OHL-S-2.0 too. The
+**Joulvo** and **Joulvo Gym** names and logo, and the earlier **KINETIQ** and **Kinetiq Gym** ones, are not licensed: only the
+maker sells kits and machines under them. Details in [LICENSE.md](LICENSE.md).
 
 **This is an untested prototype, not a finished exercise product.** Read [SAFETY.md](SAFETY.md).

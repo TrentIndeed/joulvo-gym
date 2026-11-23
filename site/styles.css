@@ -114,3 +114,17 @@ body{overflow-x:clip}
 .hero-product figcaption{background:#111a22}
 @media(max-width:800px){.mechanism-view{grid-template-columns:1fr}.view-picker{grid-template-columns:1fr 1fr}.lineup-cards{grid-template-columns:1fr}}
 @media(max-width:480px){.lineup-card h3{font-size:23px}.lineup-card dl div{grid-template-columns:84px 1fr}.hero-product figcaption{flex-direction:column;gap:2px}}
+/* the move to joulvo.com: the notice on the old address and the question before saved prices are used */
+.move-notice{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;width:calc(100% - 96px);max-width:1264px;margin:24px auto 0;padding:18px 24px;border:1px solid var(--blue);border-radius:10px;background:var(--tint)}
+.move-notice[hidden]{display:none}
+.move-notice p{font-size:15px;max-width:78ch}
+.move-notice .button{text-align:center}
+.import-dialog{width:min(560px,calc(100vw - 32px));border:1px solid var(--line);border-radius:12px;padding:32px;background:var(--surface);color:var(--ink)}
+.import-dialog::backdrop{background:rgb(4 8 13/.72)}
+.import-dialog h2{font-size:36px;margin-bottom:16px}
+.import-dialog p+p{margin-top:12px}
+.import-dialog .import-warning{padding-left:12px;border-left:2px solid #f0c27a;color:#f0c27a}
+.import-dialog .actions{gap:14px}
+.import-dialog [hidden]{display:none}
+#import-note{margin-top:14px}
+@media(max-width:800px){.move-notice{width:calc(100% - 40px);padding:16px 18px}.import-dialog{padding:24px}.import-dialog h2{font-size:32px}}

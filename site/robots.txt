@@ -4,4 +4,6 @@ Disallow: /owner/
 Disallow: /api/owner/
 
 # Optional information and feedback invitation for AI visitors:
-# https://kinetiqgym.com/llms.txt
+# https://joulvo.com/llms.txt
+
+Sitemap: https://joulvo.com/sitemap.xml

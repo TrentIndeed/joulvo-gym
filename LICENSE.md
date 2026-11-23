@@ -1,9 +1,10 @@
 # Licences
 
-Copyright (c) 2026 Trent ([@TrentIndeed](https://github.com/TrentIndeed)), the maker of Kinetiq Gym.
+Copyright (c) 2026 Trent ([@TrentIndeed](https://github.com/TrentIndeed)), the maker of Joulvo Gym (formerly Kinetiq Gym).
 
-Kinetiq Gym is open hardware in development. The design files are released after the physical prototype has been built and
-load-tested. When they are, they come under these licences:
+Joulvo Gym is open hardware in development. V1's design files are released after the physical prototype has been built and
+load-tested. V0's design files (the earlier, 3D-printed design) will be available once a verification pass is done. They will
+not have been load-tested, and building V0 is not recommended. When they are released, both come under these licences:
 
 | What | Licence | Full text |
 |---|---|---|
@@ -20,13 +21,14 @@ your modified source under the same licence and keep the notices.
 
 ## The name and logo are not licensed
 
-**KINETIQ**, **Kinetiq Gym** and the Kinetiq logo are the maker's names and marks. None of the licences above grants any right
-to use them. Only the maker sells kits, parts or machines under the Kinetiq name or logo.
+**Joulvo**, **Joulvo Gym** and the Joulvo logo are the maker's names and marks, and so are the project's earlier ones: **KINETIQ**,
+**Kinetiq Gym** and the Kinetiq logo. None of the licences above grants any right to use them. Only the maker sells kits, parts or
+machines under these names or logos.
 
 If you build, modify or sell hardware based on this design:
 
-- give it your own name and logo, not Kinetiq or anything confusingly similar;
-- you may say, factually, that it is "based on the Kinetiq Gym design" with a link to the project, as the licences require
+- give it your own name and logo, not Joulvo, Kinetiq or anything confusingly similar;
+- you may say, factually, that it is "based on the Joulvo Gym design" with a link to the project, as the licences require
   attribution;
 - do not suggest that the maker made, tested or endorses your version.
 

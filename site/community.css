@@ -69,3 +69,38 @@ footer .community-links a:focus-visible { outline: 3px solid var(--accent, var(-
   .community-grid { grid-template-columns: minmax(0, 1fr); }
   .community-card { padding: 20px; }
 }
+/* Temporary: the "formerly Kinetiq Gym" line. To take it off, remove the .formerly and .formerly-note elements and this rule. */
+.formerly { display: block; margin: -14px 0 14px; font-size: 14px; line-height: 1.4; color: var(--muted); }
+.hero .status-tag + .formerly { color: #c8d3de; }
+@media (min-width: 821px) { .hero .status-tag + .formerly { display: inline-block; margin: 0 0 0 18px; } }
+.formerly-note { color: var(--muted); }
+/* The wordmark: the owner's J mark, then OULVO in the site's font (Barlow Condensed 700), leaned 12.529 degrees: the O's left side is parallel to
+   the right edge of the J's stem, which rises 63 over 14, or 9 over 2. It is drawn here and nowhere else. A page only holds the word,
+     <a class="brand" href="/" aria-label="Joulvo home"><span class="wordmark" aria-hidden="true"><span>J</span>oulvo</span></a>
+   at no size, so copied text, search engines and screen readers get "Joulvo"; the capitals are drawn beside it.
+   All measures come from --cap, the height of the capitals (--u is 1/100 of it): the J is 130 tall on the letters' middle, so it passes their
+   top and their foot by 15 each; the letters start 9 left of its right edge; after that 1.5 between letters, 1 more before the U, 10 less
+   before the V, 2 less before the last O. The line boxes hold no font height, so the header centres the capitals whatever font is loaded.
+   The whole word is leaned once, about the capitals' foot (118 in the J's units): pieces leaned one by one would each be rounded to a pixel.
+   The J is the owner's drawing (media/joulvo-j.svg) as a clip, his numbers x and y in each point; "+ (y - 118) * 2 / 9" takes the lean out
+   first, so that it lands exactly on his points. Its three pieces follow each other with no-width hops across the two gaps. A picture or a
+   mask would be rounded to whole pixels, which turns the stem by 0.1 degree. It takes the text's colour, so it suits dark and light grounds.
+   Only the colour may change, never a point. */
+.wordmark { --cap: 20px; --u: calc(var(--cap) / 100); display: inline-block; font: 700 0/0 "Barlow Condensed", "Arial Narrow", sans-serif; letter-spacing: 0; white-space: nowrap; text-rendering: geometricPrecision;
+  transform: skewX(-12.529deg); transform-origin: 0 calc(115 * var(--u)); }
+.wordmark::before { content: ""; display: inline-block; width: calc(90 * var(--u)); height: calc(130 * var(--u)); margin: 0 calc(15 * var(--u)) 0 calc(-5 * var(--u)); vertical-align: calc(-15 * var(--u));
+  background: currentColor; -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  clip-path: polygon(calc((103 + (33 - 118) * 2 / 9 + 4) * var(--u)) calc((33 - 3) * var(--u)), calc((21 + (43 - 118) * 2 / 9 + 4) * var(--u)) calc((43 - 3) * var(--u)),
+    calc((110 + (3 - 118) * 2 / 9 + 4) * var(--u)) calc((3 - 3) * var(--u)), calc((103 + (33 - 118) * 2 / 9 + 4) * var(--u)) calc((33 - 3) * var(--u)),
+    calc((101 + (39 - 118) * 2 / 9 + 4) * var(--u)) calc((39 - 3) * var(--u)), calc((87 + (102 - 118) * 2 / 9 + 4) * var(--u)) calc((102 - 3) * var(--u)),
+    calc((46 + (133 - 118) * 2 / 9 + 4) * var(--u)) calc((133 - 3) * var(--u)), calc((35 + (133 - 118) * 2 / 9 + 4) * var(--u)) calc((133 - 3) * var(--u)),
+    calc((1 + (98 - 118) * 2 / 9 + 4) * var(--u)) calc((98 - 3) * var(--u)), calc((47 + (93 - 118) * 2 / 9 + 4) * var(--u)) calc((93 - 3) * var(--u)),
+    calc((35 + (133 - 118) * 2 / 9 + 4) * var(--u)) calc((133 - 3) * var(--u)), calc((46 + (133 - 118) * 2 / 9 + 4) * var(--u)) calc((133 - 3) * var(--u)),
+    calc((72 + (44 - 118) * 2 / 9 + 4) * var(--u)) calc((44 - 3) * var(--u)), calc((101 + (39 - 118) * 2 / 9 + 4) * var(--u)) calc((39 - 3) * var(--u))); }
+.wordmark > span::before, .wordmark > span::after, .wordmark::after { font-size: calc(var(--cap) / .7); letter-spacing: calc(1.5 * var(--u)); font-kerning: normal; }
+.wordmark > span::before { content: "O"; margin-right: calc(1 * var(--u)); }
+.wordmark > span::after { content: "UL"; }
+.wordmark::after { content: "VO"; margin-left: calc(-10 * var(--u)); letter-spacing: calc(-.5 * var(--u)); }
+@media (forced-colors: active) { .wordmark::before { forced-color-adjust: none; background: LinkText; } }
+/* the front pages' header is as tall as before, whatever the logo's height */
+.top .brand { min-height: 1.6em; }

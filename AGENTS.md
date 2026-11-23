@@ -8,12 +8,13 @@ see [Public-repo rules](#public-repo-rules).
 
 ## What this repository is
 
-It is the source of **kinetiqgym.com**, the website of Kinetiq Gym, an open-hardware programmable smart gym that is still in
-development. The site is static HTML, CSS and JavaScript in `site/`. A Cloudflare Worker (`src/worker.js`) serves it and also
-handles the forms. There is no build step and no `package.json`; `npx` fetches wrangler when it is needed.
+It is the source of **joulvo.com**, the website of Joulvo Gym (formerly Kinetiq Gym, kinetiqgym.com), an open-hardware programmable
+smart gym that is still in development. The site is static HTML, CSS and JavaScript in `site/`. A Cloudflare Worker
+(`src/worker.js`) serves it and also handles the forms. There is no build step and no `package.json`; `npx` fetches wrangler when it is needed.
 
-The repository holds the website, the docs, the renders and the licences. The CAD, print files and software live elsewhere. They
-are published only after the prototype has been built and load-tested.
+The repository holds the website, the docs, the renders and the licences. The CAD, print files and software live elsewhere. V1's
+are published only after the prototype has been built and load-tested. V0's design files have their own rule: see rule 2 of the
+[public-repo rules](#public-repo-rules).
 
 ### Pages and files
 
@@ -24,12 +25,15 @@ are published only after the prototype has been built and load-tested.
 | `site/work.html` | The "discuss a project" page (`/work`). Its form posts to `/api/contact`. |
 | `site/privacy.html` | The privacy page. |
 | `site/docs/` | The reference pages: each `X.md` and its rendered `X.html`. |
+| `site/price-transfer.js` | A visitor's own prices: the saved key, the link that carries them from kinetiqgym.com to joulvo.com, and reading an exported list back. |
+| `site/sitemap.xml` | Written by `node tools/make-sitemap.mjs` from the pages' canonical links. Run it when a page is added or removed. |
 | `site/data/project.json` | The builds and their parts lists (see [below](#how-the-build-lists-and-docs-are-made)). |
 | `site/data/parts.csv` | The same lists, as a download. |
 | `site/data/community.json` | The donation link and the support wording. |
 | `site/llms.txt`, `site/robots.txt` | An optional feedback invitation for AI visitors. Each page's `<head>` links to it; `node tools/add-agent-discovery.mjs` adds that link to new pages. |
-| `site/media/` | The renders, the film and the logo. `site/media/builds/` holds one picture set per build (`<build id>-covers-on`, `-covers-off`, `-exit`, `-mount`): quick previews from the CAD, to be replaced by final renders once the owner signs them off. `site/media/launch/hero-v1-preview.mp4` is a preview too. |
+| `site/media/` | The renders, the film and the logo (`joulvo-j.svg` and `joulvo-mark*.svg`, the owner's drawing: change only a fill, never a path; `mark.svg` is the earlier name's mark, kept). `site/media/builds/` holds one picture set per build (`<build id>-covers-on`, `-covers-off`, `-exit`, `-mount`): quick previews from the CAD, to be replaced by final renders once the owner signs them off. `site/media/launch/hero-v1-preview.mp4` is a preview too. |
 | `src/worker.js` | The Worker: the two forms (stored in D1) and byte-range replies so the videos can be scrubbed. |
+| `src/host-move.js` | The move from kinetiqgym.com to joulvo.com: redirects that are off by default (see [below](#the-move-to-joulvocom)). |
 | `src/agent-feedback.js`, `src/agent-inbox-page.js` | The AI-visitor feedback endpoint and the owner's private inbox, stored in Workers KV. See `docs/agent-feedback.md`. |
 | `db/schema.sql` | The D1 tables: `signups`, `enquiries` and `rate`. |
 | `tools/` | The tests (`*.test.mjs`) and helper scripts. |
@@ -47,10 +51,39 @@ Some files are git-ignored and exist only on the owner's PC:
 
 Never commit these files, and never print or quote what is in them.
 
+### Names
+
+| What | Name |
+|---|---|
+| Brand | Joulvo in text, never in capitals. Only the logo has capitals: the J mark followed by OULVO, leaned so that the O's left side is parallel to the right edge of the J's stem. `.wordmark` in `site/community.css` draws it; the pages only hold the word. |
+| Product | Joulvo Gym |
+| Kit (planned) | Joulvo Gym Kit |
+| Descriptor | The open-source smart gym. Always with its status beside it ("in development"): V1's CAD, build files and software are released after testing, and nothing here may say they are out. |
+
+- The "formerly Kinetiq Gym" lines are temporary. On the pages they carry the class `formerly` or `formerly-note`.
+- Names kept on purpose: the D1 database, the Worker and the KV namespace; the owner cookie and the feedback invitation id; the old
+  saved-price key, which is still read; `r/KinetiqGym`; the film file and the app pictures, made under the earlier name.
+- The repository's GitHub address is in many pages. It is one constant in `tools/repo-links.mjs`: `node tools/repo-links.mjs` lists every
+  place, and `node tools/repo-links.mjs --set <owner>/<name>` changes them all when the repository is renamed.
+
+### The move to joulvo.com
+
+One Worker answers on joulvo.com, www.joulvo.com, kinetiqgym.com and www.kinetiqgym.com. `src/host-move.js` holds the redirects. They are
+off unless the Worker variable `JOULVO_REDIRECTS` is exactly `on`; with it off every name serves the same site.
+
+- On: GET and HEAD on the old names get one 301 to the same page on https://joulvo.com, and www.joulvo.com goes to joulvo.com.
+- POST is never redirected, and nor is `/api/`: the forms and the feedback endpoint answer on all four names with the same database.
+- `/owner/` and `/media/` stay on the old names.
+- `/build` and the files it loads stay on the old names until `JOULVO_BUILD_UNTIL` (a date, 90 days after the move), so visitors can carry
+  their saved prices over. Without a valid date it stays.
+- The Worker only sees a page if it runs before the static files for that path. That is a setting, not code: the owner changes it.
+- `tools/host-move.test.mjs` requests every path on every name with the redirects on and off.
+
 ### What is live now
 
-The V1 lineup was prepared on November 20, 2026 (branch `site-v1-lineup-2026-11-20`). It replaces the October 27 lineup (Main,
-Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
+The rename to Joulvo was prepared on November 23, 2026 (branch `joulvo-rebrand-2026-11-23`), on top of the V1 lineup, and goes live
+when the owner says so. The V1 lineup was prepared on November 20, 2026 (branch `site-v1-lineup-2026-11-20`). It replaces the
+October 27 lineup (Main, Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
 
 | Build | Data id | Status | Resistance shown (always "design target, not built or tested") | Motor, controller, power | Priced lines on November 20 |
 |---|---|---|---|---|---|
@@ -72,11 +105,11 @@ Budget and Wall builds, PR #30). Use the check below to see which one is live. T
   one back unless the owner asks.
 
 To check that the live site still matches your checkout, run this in bash (Git Bash on Windows). The two hashes on each line
-should be equal:
+should be equal. (Until joulvo.com is connected, use kinetiqgym.com.)
 
 ```sh
 for f in data/project.json data/parts.csv app.js; do
-  echo "$f $(sha1sum < site/$f | cut -c1-12) $(curl -sL https://kinetiqgym.com/$f | sha1sum | cut -c1-12)"
+  echo "$f $(sha1sum < site/$f | cut -c1-12) $(curl -sL https://joulvo.com/$f | sha1sum | cut -c1-12)"
 done
 ```
 
@@ -152,6 +185,8 @@ access, tell the owner what should change so the files can be generated again. I
 ```sh
 node --test tools/*.test.mjs                  # the Worker, the forms and the inbox, in memory (Node 22.5 or newer)
 node --check src/worker.js                    # syntax checks, one file each
+node --check src/host-move.js
+node --check site/price-transfer.js
 node --check site/app.js
 node --check site/home.js
 python -m http.server 8770 --directory site   # static preview: http://127.0.0.1:8770/build.html (the forms don't work here)
@@ -235,9 +270,18 @@ The AI-visitor inbox (`/owner/agent-replies`) is for the owner only:
 
 1. **No CAD or code is published until it is verified.** That means no STEP, DXF, STL or 3MF files, no FreeCAD or other CAD
    source, no CAD pipeline scripts, no print files, and no Pi, Teensy, phone-app or firmware code. Until the prototype passes its
-   tests, the public repository holds only the website, docs, renders and licences.
+   tests, the public repository holds only the website, docs, renders and licences. (V0's design files: rule 2.)
 2. **The owner's printed build stays private.** The 3D-printed fit-test unit is never a public build option, a parts-list choice
    or a download. The printed parts of the metal builds, in `docs/printing.md`, are a different thing and are fine.
+   - **V0's design files, the owner's words (November 23, 2026):** "the v0 design files will be available once a verify pass is done,
+     but its not recommended to build from the website".
+   - So a page may say that V0's design files will be available once a verification pass is done, always with "Building V0 is not
+     recommended: V1 is the version to wait for". No date, and nothing that calls V0 safe or tested.
+   - Licence and place (the owner, the same day): CERN-OHL-S-2.0 like the rest of the hardware design, in their own folder of this
+     repository, with a "not recommended to build" note on top. Supplier CAD stays out (rule 3).
+   - This is an announcement, not permission to publish: no V0 file goes into this repository or onto the site until the owner says
+     the pass is done. V0 stays out of the build options and the parts lists.
+   - V1's release rule is unchanged: after it is built and load-tested.
 3. **No vendor CAD.** Never publish supplier models of motors, controllers, bearings or other bought parts.
 4. **No private data.** That includes:
    - email addresses, Cloudflare account, database and namespace ids, Worker subdomains, keys and tokens;
@@ -248,10 +292,11 @@ The AI-visitor inbox (`/owner/agent-replies`) is for the owner only:
 6. **Contributions are closed** until the verified release (see `CONTRIBUTING.md`). Don't add PR or issue templates that invite
    contributions, and don't open the repository up.
 7. **The licence is open and the name is protected.** At the verified release the hardware is CERN-OHL-S-2.0, the documentation
-   CC BY-SA 4.0 and the software GPL-3.0. The KINETIQ and Kinetiq Gym names and logo are not licensed: only the owner sells kits
-   and machines under them. Don't weaken `LICENSE.md` or remove the name reservation.
+   CC BY-SA 4.0 and the software GPL-3.0. The Joulvo and Joulvo Gym names and logo, and the earlier KINETIQ and Kinetiq Gym ones,
+   are not licensed: only the owner sells kits and machines under them. Don't weaken `LICENSE.md` or remove the name reservation.
 8. **Use the owner's build names:** V1, V1 (220 battery), V1 wall power (220), V1 budget wall power, V1 wall mount (300). V0 is
-   the owner's printed prototype of the earlier design: it may be named as a stage of the project, never offered as a build.
+   the owner's printed prototype of the earlier design: it may be named as a stage of the project, never offered as a build (its
+   design files: rule 2).
    - Never use internal codes such as review, revision, round or draft numbers.
    - Never use dropped names for a current build: Main, Budget or Wall build, Lite, hoverboard or hub-motor builds. The
      October reference pages keep "main build" and "budget build" under their notice until they are rewritten.

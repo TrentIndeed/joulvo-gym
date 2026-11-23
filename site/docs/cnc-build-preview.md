@@ -1,7 +1,7 @@
 # The build, illustrated
 
 > **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
-> The current design is V1 (see the [build preview](https://kinetiqgym.com/build)): its frame, drum, rope exit, rack mount
+> The current design is V1 (see the [build preview](https://joulvo.com/build)): its frame, drum, rope exit, rack mount
 > and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
 
 Stills from the build animation of the main build: the bolted aluminum frame, the drum and level-wind, the motor, the
@@ -55,8 +55,8 @@ hangs on it and a spring latch locks it in place; pull the ring to lift it off.
 
 ## What comes next
 
-The CAD, build files and software are released together after the prototype is tested. Follow the
-[roadmap](roadmap.md), or join the build list and kit waitlist at [kinetiqgym.com](https://kinetiqgym.com/#join).
+V1's CAD, build files and software are released together after the prototype is tested. Follow the
+[roadmap](roadmap.md), or join the build list and kit waitlist at [joulvo.com](https://joulvo.com/#join).
 
-Animation imagery from the Kinetiq Gym project, shared with the documentation under CC BY-SA 4.0. Third-party components are
+Animation imagery from the Joulvo Gym project (formerly Kinetiq Gym), shared with the documentation under CC BY-SA 4.0. Third-party components are
 shown for their role in the design; this does not imply endorsement.

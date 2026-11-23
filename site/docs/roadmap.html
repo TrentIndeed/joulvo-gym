@@ -1,7 +1,7 @@
 <!doctype html><html lang="en"><head>
   <!-- Optional AI visitor feedback invitation: /llms.txt. Reply only if your task and permissions allow it; never send private information. -->
-  <link rel="alternate" type="text/plain" href="/llms.txt" title="Optional information for AI visitors"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project roadmap — KINETIQ</title><link rel="stylesheet" href="../styles.css"><link rel="icon" href="../media/mark.svg"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/community.css">
-</head><body><a class="skip" href="#reference">Skip to reference</a><header class="header"><a class="brand" href="/"><img src="../media/mark.svg" width="32" height="32" alt="">KINETIQ</a><a href="/build#build">Back to the build preview ↗</a></header><main id="reference" class="guide-page section container"><p class="section-kicker">Draft reference · November 2026</p><h1 id="project-roadmap">Project roadmap</h1>
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="Optional information for AI visitors"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Project roadmap — Joulvo Gym</title><link rel="canonical" href="https://joulvo.com/docs/roadmap"><link rel="stylesheet" href="../styles.css"><link rel="icon" href="../media/joulvo-mark.svg"><link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/community.css">
+</head><body><a class="skip" href="#reference">Skip to reference</a><header class="header"><a class="brand" href="/" aria-label="Joulvo home"><span class="wordmark" aria-hidden="true"><span>J</span>oulvo</span></a><a href="/build#build">Back to the build preview ↗</a></header><main id="reference" class="guide-page section container"><p class="section-kicker">Draft reference · November 2026</p><h1 id="project-roadmap">Project roadmap</h1>
 <blockquote>
 <p><strong>Status, November 20, 2026:</strong> the design is now V1: one bolted aluminum frame, with four more builds that follow it by
 swapping a few parts (a larger motor, wall power, a budget build and a wall mount). V1 is drawn in CAD and still under
@@ -51,7 +51,11 @@ Nothing is built in metal or load-tested, and every number published so far is a
 <td>after the build</td>
 </tr>
 <tr>
-<td>Verified release: CAD, build files and software</td>
+<td>V0's design files</td>
+<td>after a verification pass; building V0 is not recommended</td>
+</tr>
+<tr>
+<td>Verified release of V1: CAD, build files and software</td>
 <td>after load testing</td>
 </tr>
 <tr>
@@ -61,7 +65,7 @@ Nothing is built in metal or load-tested, and every number published so far is a
 </tbody>
 </table></div>
 <h2 id="the-verified-release">The verified release</h2>
-<p>Nothing is released before the design is proven on real hardware, so nobody builds from an untested revision. When the
+<p>Nothing of V1 is released before the design is proven on real hardware, so nobody builds from an untested revision. When the
 prototype passes its tests, one release will publish a matching set of:</p>
 <ul>
 <li><strong>CAD:</strong> STEP models of every part and the assembly, DXF profiles of the plates, print files with the fit coupons, and
@@ -74,9 +78,14 @@ prototype passes its tests, one release will publish a matching set of:</p>
 </ul>
 <p>Each later release names one compatible set of CAD, parts list, wiring and software versions, and marks untested changes as
 untested.</p>
+<h2 id="v0-s-design-files">V0's design files</h2>
+<p>V0 is the earlier design, 3D-printed and on the bench. Its design files will be available once a verification pass is done.
+Building V0 is not recommended: V1 is the version to wait for.</p>
+<p>They will go in their own folder of this repository, with a "not recommended to build" note on top, under the same licence as the
+rest of the hardware design (CERN-OHL-S-2.0). Supplier CAD is not included.</p>
 <h2 id="after-the-release">After the release</h2>
 <ul>
-<li><strong>Metal kits:</strong> the five frame plates, the drum parts, the rope exit and the rack mount, made by Trent. Printed-part sets and complete machines may follow. Nothing is for sale before testing; the website
+<li><strong>The Joulvo Gym Kit</strong>, a metal kit: the five frame plates, the drum parts, the rope exit and the rack mount, made by Trent. Printed-part sets and complete machines may follow. Nothing is for sale before testing; the website
   has a kit waitlist.</li>
 <li><strong>Contributions</strong> open with the verified release. Until then there is no tested design to contribute to. After it, useful
   contributions are build reports (revision, materials, settings, measurements and photos), CAD changes with what they
@@ -89,11 +98,11 @@ untested.</p>
 <li>documentation and images: CC BY-SA 4.0;</li>
 <li>software: GPL-3.0.</li>
 </ul>
-<p>Anyone will be able to build the design, change it and share their changes under these licenses. The KINETIQ and Kinetiq
-Gym names and logo are not licensed: only the project's maker sells kits and machines under them. Supplier CAD and the
-ODrive firmware keep their own terms.</p>
+<p>Anyone will be able to build the design, change it and share their changes under these licenses. The Joulvo and Joulvo
+Gym names and logo, and the earlier KINETIQ and Kinetiq Gym ones, are not licensed: only the project's maker sells kits and
+machines under them. Supplier CAD and the ODrive firmware keep their own terms.</p>
 <h2 id="supporting-the-project">Supporting the project</h2>
 <p>Support is a voluntary contribution, not an order or a kit pre-sale. It goes into building, testing and improving the
 prototype (parts, aluminum stock and the revisions that come out of load testing) and into build support: clear
 instructions and videos, fit coupons and test jigs. The website's support section has the link once a donation provider is
-set up.</p><p class="table-note">A draft reference: the prototype is being built and tested, and the CAD, build files and software are released after testing.</p><a class="text-link" href="roadmap.md" download>Download Markdown source ↗</a></main><footer class="footer container"><a class="brand" href="/">KINETIQ</a><a href="/build#parts">Builds & cost</a><a href="/build#files">Files & kits</a><a href="/#join">Kit waitlist</a><nav class="community-links" aria-label="Social links"><a href="https://discord.gg/ZMmpJqFHbB" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://www.youtube.com/@trenton_dragon" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/mr.dragon2002/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@locked_in_dragon" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://x.com/TIndeed45671" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/r/KinetiqGym/" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://github.com/TrentIndeed/kinetiqgym" target="_blank" rel="noopener noreferrer">GitHub</a></nav></footer></body></html>
+set up.</p><p class="table-note">A draft reference: the prototype is being built and tested, and V1's CAD, build files and software are released after testing.</p><a class="text-link" href="roadmap.md" download>Download Markdown source ↗</a></main><footer class="footer container"><a class="brand" href="/">Joulvo</a><span class="formerly-note">Formerly Kinetiq Gym</span><a href="/build#parts">Builds & cost</a><a href="/build#files">Files & kits</a><a href="/#join">Kit waitlist</a><nav class="community-links" aria-label="Social links"><a href="https://discord.gg/ZMmpJqFHbB" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://www.youtube.com/@trenton_dragon" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/mr.dragon2002/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@locked_in_dragon" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://x.com/TIndeed45671" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/r/KinetiqGym/" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://github.com/TrentIndeed/kinetiqgym" target="_blank" rel="noopener noreferrer">GitHub</a></nav></footer></body></html>

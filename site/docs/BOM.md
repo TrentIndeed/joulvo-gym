@@ -5,7 +5,7 @@
 > counts, in the verified release after a prototype has been built and load-tested. Prices are planning figures read on the
 > dates shown, not quotes; stock and prices change. Nothing here is endorsed by the suppliers.
 
-The [website](https://kinetiqgym.com/build#parts) has the same list with per-build totals and editable prices.
+The [website](https://joulvo.com/build#parts) has the same list with per-build totals and editable prices.
 
 **How the list is organized.** The **main list** is what a builder has to buy, from the motor and controller down to the
 metal stock. Small bulk parts are priced by the pieces used; the note gives the pack. A line marked **to come** has no price

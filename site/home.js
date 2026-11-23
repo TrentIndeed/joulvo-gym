@@ -1,5 +1,5 @@
 'use strict';
-// Old links into the builder content (kinetiqgym.com/#parts and the like) now live on build.html.
+// Old links into the builder content (kinetiqgym.com/#parts and the like, which arrive here as joulvo.com/#parts) live on build.html.
 const MOVED = ['build', 'parts', 'files', 'modify', 'software', 'open-source', 'mechanism', 'repo-status'];
 if (MOVED.includes(location.hash.slice(1))) location.replace('/build' + location.hash);
 
