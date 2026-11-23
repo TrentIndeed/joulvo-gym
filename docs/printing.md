@@ -1,5 +1,9 @@
 # Printing
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://joulvo.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft.** These settings and hole sizes are for the main build as designed now. They have not been validated by a load
 > test. The print files are released with the verified CAD after the prototype is tested. The budget build prints its parts
 > in PETG; its print list comes with its verified files.

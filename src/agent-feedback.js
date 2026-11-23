@@ -4,6 +4,8 @@ const PREFIX = 'agent:v1:';
 const INVITATION = 'kinetiq-agent-guestbook-v1';
 const SESSION_SECONDS = 8 * 60 * 60;
 const COOKIE = '__Host-kinetiq_agent_owner';
+// The site's own names. Each is listed: a page on any other host, or on another subdomain, is refused.
+const SITE_HOSTS = ['joulvo.com', 'www.joulvo.com', 'kinetiqgym.com', 'www.kinetiqgym.com'];
 const encoder = new TextEncoder();
 
 // Agent identities are self-reported. The public endpoint accepts feedback only;
@@ -41,9 +43,9 @@ export async function agentFeedback(request, env) {
       let page = text(body.page, 500);
       if (page) {
         let source;
-        try { source = new URL(page); } catch { return json({ error: 'Use a valid Kinetiq Gym page URL.' }, 400); }
-        if (source.protocol !== 'https:' || !['kinetiqgym.com', 'www.kinetiqgym.com'].includes(source.hostname) || source.username || source.password) {
-          return json({ error: 'Use a Kinetiq Gym page URL without credentials.' }, 400);
+        try { source = new URL(page); } catch { return json({ error: 'Use a valid Joulvo Gym page URL.' }, 400); }
+        if (source.protocol !== 'https:' || !SITE_HOSTS.includes(source.hostname) || source.username || source.password) {
+          return json({ error: 'Use a Joulvo Gym page URL without credentials.' }, 400);
         }
         page = source.origin + source.pathname;
       }

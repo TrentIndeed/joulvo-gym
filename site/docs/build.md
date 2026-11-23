@@ -1,9 +1,13 @@
 # Build instructions
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://joulvo.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft build order.** This is the assembly order for the main build as designed now (October 2026). It has not been
 > confirmed on hardware yet. Steps, screw lengths and torques will be checked, corrected and photographed on the
 > prototype, then released with the verified CAD and build files. Read the
-> [safety reference](https://kinetiqgym.com/docs/SAFETY.html) before you start.
+> [safety reference](https://joulvo.com/docs/SAFETY.html) before you start.
 
 Order matters: some parts cannot be reached once others are in. The steps describe the main build (Freerchobby MP8085
 motor, ODrive Pro, 10S battery). The budget build is a separate, simpler design: see the end of this page.
@@ -16,9 +20,9 @@ the exit, the screw-end tower, the gears, the brackets and the covers.
 
 ## 0. Before you start
 
-1. Read the [safety reference](https://kinetiqgym.com/docs/SAFETY.html). The machine stores energy in the rope, the battery
+1. Read the [safety reference](https://joulvo.com/docs/SAFETY.html). The machine stores energy in the rope, the battery
    and the motor.
-2. Order the parts for your build from the [parts list](https://kinetiqgym.com/docs/BOM.html). The motor ships from its
+2. Order the parts for your build from the [parts list](https://joulvo.com/docs/BOM.html). The motor ships from its
    maker, the battery packs are built to order, and the BMS, fuses and coupling come from different sellers.
 3. Tools you need:
    - a drill (a drill press helps), a bench vise, and 3.4 and 4.5 mm drills for the edge holes;
@@ -401,7 +405,7 @@ A finished assembly is not a training-ready machine. Before the motor is powered
 1. Work through [firmware-setup.md](firmware-setup.md): limits, calibration, homing, the motor thermistor and the payout
    window.
 2. Follow the first power-up and load-test steps in the
-   [safety reference](https://kinetiqgym.com/docs/SAFETY.html).
+   [safety reference](https://joulvo.com/docs/SAFETY.html).
 3. Wait at least 24 h after the Loctite 638 steps before loading the drum.
 
 The control software (Pi app, Teensy firmware, phone app) is released after the prototype has been tested.
@@ -415,4 +419,4 @@ It hangs on the rack upright on one 1 in hitch pin. The same MP8085 sits in an o
 and the exit is the main build's swivel. The ODESC, its fan and its heat spreader are on the unit; the 48 V supply, the
 mains inlet and its switch are in a floor box, with one cable up the rack. A knob, a start/stop button and a phone app
 (Bluetooth) set the weight. Its build order is published with its verified files; its parts are in the
-[parts list](https://kinetiqgym.com/docs/BOM.html) and its wiring is summarized in [wiring.md](wiring.md).
+[parts list](https://joulvo.com/docs/BOM.html) and its wiring is summarized in [wiring.md](wiring.md).

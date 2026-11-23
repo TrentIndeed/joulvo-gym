@@ -161,3 +161,24 @@ test('inbox HTML is uncacheable, unindexed, framed off and contains no owner sec
   assert.match(response.headers.get('x-robots-tag'), /noindex/);
   assert.ok(!(await response.text()).includes(OWNER));
 });
+test('feedback may name a page on the site\'s own four names, and on nothing that only looks like them', async () => {
+  const send = (page, host = 'joulvo.com', origin) => worker.fetch(new Request(`https://${host}/api/agent-feedback`, { method: 'POST', headers: { 'content-type': 'application/json', 'cf-connecting-ip': '192.0.2.9', ...(origin ? { origin } : {}) }, body: JSON.stringify(feedback({ page })) }), environment());
+  for (const host of ['joulvo.com', 'www.joulvo.com', 'kinetiqgym.com', 'www.kinetiqgym.com']) {
+    assert.equal((await send(`https://${host}/build`)).status, 201, host);
+    assert.equal((await send(`https://${host}/build`, host, `https://${host}`)).status, 201, host);
+  }
+  for (const page of ['http://joulvo.com/', 'https://joulvo.com.example.test/', 'https://example.test/joulvo.com', 'https://notjoulvo.com/', 'https://cad.joulvo.com/', 'https://cad.kinetiqgym.com/', 'https://name:password@joulvo.com/', 'https://joulvo.com@example.test/', 'javascript:alert(1)']) {
+    assert.equal((await send(page)).status, 400, page);
+  }
+});
+test('the same-origin checks are as strict as before: the old and the new name are different origins', async () => {
+  const env = environment();
+  const call = (host, path, origin, method = 'POST', body = {}) => worker.fetch(new Request(`https://${host}${path}`, { method, headers: { 'content-type': 'application/json', origin, 'cf-connecting-ip': '192.0.2.10' }, body: method === 'DELETE' ? undefined : JSON.stringify(body) }), env);
+  for (const [host, other] of [['joulvo.com', 'kinetiqgym.com'], ['joulvo.com', 'www.joulvo.com'], ['www.joulvo.com', 'joulvo.com'], ['kinetiqgym.com', 'joulvo.com'], ['joulvo.com', 'example.test']]) {
+    assert.equal((await call(host, '/api/agent-feedback', `https://${other}`, 'POST', feedback())).status, 403, `${other} -> ${host}`);
+    assert.equal((await call(host, '/api/agent-feedback', `http://${host}`, 'POST', feedback())).status, 403, host);
+    assert.equal((await call(host, '/api/owner/agent-feedback/session', `https://${other}`, 'POST', { key: OWNER })).status, 403, `${other} -> ${host}`);
+    assert.equal((await call(host, '/api/owner/agent-feedback/session', `https://${other}`, 'DELETE')).status, 403, `${other} -> ${host}`);
+    assert.equal((await call(host, '/api/owner/agent-feedback/session', `https://${host}`, 'POST', { key: OWNER })).status, 200, host);
+  }
+});

@@ -1,5 +1,9 @@
 # Electronics and firmware setup
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://joulvo.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft.** The control software is not released yet: the touchscreen app for the Raspberry Pi, the Teensy control
 > firmware and the phone app are published after the prototype has been built and load-tested. This page lists what the
 > setup must achieve before the motor is ever powered with the rope attached. The values are design values, to be
@@ -93,7 +97,7 @@ backstop only. The lead screw is geared to the drum, so a stop hit under power l
    screw-end tower while winding.
 5. Home, then set and test the payout window with the rope attached and no load.
 6. Check the over-voltage trip and the regen limit with light lowering loads.
-7. Static load test in steps (see the [safety reference](https://kinetiqgym.com/docs/SAFETY.html)).
+7. Static load test in steps (see the [safety reference](https://joulvo.com/docs/SAFETY.html)).
 
 ## Teensy 4.0 (main build)
 

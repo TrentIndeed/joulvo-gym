@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="11.5 12 136 136" width="136" height="136">
+  <!-- the tab icon: the same drawing, a tighter canvas so that it fills a small tab, and a fill that follows the browser's theme -->
+  <style>.j{fill:#101418}@media (prefers-color-scheme:dark){.j{fill:#edf2f7}}</style>
+  <g class="j" transform="translate(24 12)">
+    <path d="M 21 43 L 110 3 L 103 33 Z"/>
+    <path d="M 72 44 L 101 39 L 87 102 L 46 133 Z"/>
+    <path d="M 1 98 L 47 93 L 35 133 Z"/>
+  </g>
+</svg>

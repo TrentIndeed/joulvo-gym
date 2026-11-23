@@ -1,11 +1,15 @@
 # Modifying the design
 
+> **Earlier design (October 2026).** This page describes the main and budget builds as they were drawn in October 2026.
+> The current design is V1 (see the [build preview](https://joulvo.com/build)): its frame, drum, rope exit, rack mount
+> and fuses are different. This page is kept as a record until it is rewritten for V1. Do not build from it.
+
 > **Draft.** The numbers below are design values for the main build as designed now; they are confirmed or corrected after
 > the prototype is load-tested. The editable CAD is released with the verified build files after that. Until then this
 > page describes the interfaces in words and numbers.
 
 The design is built to be adapted. The two interfaces most builders will change are the **battery bay** and the **motor
-face**. The [website adaptation guide](https://kinetiqgym.com/build#modify) illustrates both. This page describes the main
+face**. The [website adaptation guide](https://joulvo.com/build#modify) illustrates both. This page describes the main
 build; the budget build runs from the wall and has no battery bay.
 
 ## Batteries
@@ -89,5 +93,5 @@ not released yet.
 ## Sharing your changes
 
 With the verified release the hardware is licensed CERN-OHL-S-2.0 (share-alike): if you distribute a modified version,
-publish your modified design files under the same license. The KINETIQ and Kinetiq Gym names and logo are not licensed.
-Contributions to the project open with the verified release.
+publish your modified design files under the same license. The Joulvo and Joulvo Gym names and logo, and the earlier
+KINETIQ and Kinetiq Gym ones, are not licensed. Contributions to the project open with the verified release.

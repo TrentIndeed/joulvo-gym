@@ -56,3 +56,75 @@ body{overflow-x:clip}
 
 /* October 14: the shared header (home.css look) and the build page's "On this page" bar */
 .header nav a{color:var(--muted)}.header nav a:hover{color:var(--ink)}.header nav .button{min-height:40px;padding:8px 16px;border-radius:8px}.header nav .nav-support{border-color:rgb(237 242 247/.35);color:var(--ink)}.header nav .nav-support:hover{border-color:var(--ink)}.header nav .primary{color:var(--on-accent)}.header nav .primary:hover{color:var(--on-accent)}.page-nav{border-bottom:1px solid var(--line);background:rgb(10 14 19/.92);backdrop-filter:blur(10px);position:sticky;top:84px;z-index:19}.page-nav-inner{max-width:1360px;margin-inline:auto;padding:10px 48px;display:flex;gap:22px;align-items:center;overflow-x:auto;white-space:nowrap;font-size:14px;font-weight:600;scrollbar-width:none}.page-nav-inner::-webkit-scrollbar{display:none}.page-nav span{color:var(--faint);font-weight:500}.page-nav a{color:var(--muted);text-decoration:none}.page-nav a:hover{color:var(--ink)}.mod-panel img{background:#e9eff5}@media(max-width:1100px){.page-nav-inner{padding-inline:25px}}@media(max-width:800px){.page-nav{position:static}.page-nav-inner{padding-inline:20px}.header nav .button{margin-top:10px}}
+
+/* November 20: the lineup (one card per build) and the build / view picker. The pictures are CAD previews on a light ground. */
+.lineup-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:20px;margin-bottom:14px}
+.lineup-card{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:10px;background:var(--surface);overflow:hidden;min-width:0}
+.lineup-card.current{border-color:var(--blue)}
+.lineup-card figure{position:relative;background:#eef0f3;margin:0}
+.lineup-card img{display:block;width:100%;aspect-ratio:1.6;object-fit:cover}
+.lineup-card figcaption{position:absolute;left:10px;bottom:10px;font-size:11px;padding:4px 9px;background:#102334e8;color:#fff;border-radius:4px}
+.lineup-body{display:flex;flex-direction:column;gap:10px;padding:20px 20px 22px;flex:1}
+.lineup-status{display:flex;flex-wrap:wrap;gap:6px}
+.lineup-status .pill{margin-right:0}
+.pill.now{background:var(--blue);color:var(--on-accent)}
+.lineup-card h3{font-size:26px;line-height:1.15}
+.lineup-tag{color:var(--muted);font-size:15px}
+.lineup-card dl{display:grid;gap:0;margin:4px 0 0;border-top:1px solid var(--line)}
+.lineup-card dl div{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:13px}
+.lineup-card dt{color:var(--faint);font-weight:600}
+.lineup-card dd{margin:0;color:var(--ink)}
+.lineup-price{margin-top:auto;padding-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lineup-price p{min-width:0}
+.lineup-price strong{display:block;font-size:30px;font-weight:600;letter-spacing:-.03em;font-variant-numeric:tabular-nums;line-height:1.1}
+.lineup-price p:first-child strong{color:var(--accent-strong)}
+.lineup-price span{display:block;font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+.lineup-plan{font-size:13px;color:var(--ink);border-left:2px solid var(--blue);padding-left:10px}
+.build-pair{display:flex;flex-wrap:wrap;gap:4px 18px;margin-top:auto;padding-top:10px}
+.build-pair .build-total{margin-top:0;padding-top:0;font-size:26px}
+.build-pair .build-total small{display:block;margin-left:0}
+.build-pair .build-total:first-child{color:var(--accent-strong)}
+.summary-pair{display:flex;flex-wrap:wrap;gap:8px 44px}
+.summary-pair p:first-child strong{color:var(--accent-strong)}
+.summary-pair small{display:block}
+/* the screen-reader labels in the parts table are absolutely positioned: without a positioned scroll box they sat outside it and made the page scroll sideways on phones */
+.table-scroll{position:relative}
+.compare-scroll{margin-bottom:10px}
+.compare{width:100%;border-collapse:collapse;font-size:15px}
+.compare th,.compare td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.compare thead th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.compare small{display:block;font-size:11px;font-weight:500;letter-spacing:0;text-transform:none;color:var(--faint);margin-top:2px}
+.compare .num strong{font-size:22px;font-variant-numeric:tabular-nums}
+.compare td.num:nth-child(2) strong{color:var(--accent-strong)}
+.compare tbody th{font-weight:600;white-space:nowrap}
+.compare tbody th a{color:var(--ink)}
+.compare .c-res small{display:none}
+/* phones: one block per build (name, then resistance beside the price, then power and mount), each value labelled */
+@media(max-width:640px){.compare thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.compare,.compare tbody{display:block}.compare tr{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;padding:16px 2px;border-bottom:1px solid var(--line)}.compare tbody th,.compare td{display:block;padding:0;border:0;background:none}.compare tbody th{grid-column:1/-1;white-space:normal;font-size:17px}.compare td::before{content:attr(data-label);display:block;margin-bottom:3px;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--faint)}.compare .c-res{order:1}.compare .c-price{order:2}.compare .c-pow{order:3;font-size:14px}.compare .c-mnt{order:4;font-size:14px}.compare .c-res small{display:block}.compare .num strong{font-size:26px}.compare-scroll{overflow:visible}}
+.lineup-actions{display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-top:6px}
+.lineup-actions .button{min-height:44px}
+.look-builds{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.look-builds button{min-height:44px;padding:9px 16px;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);font-size:14px;font-weight:600}
+.look-builds button[aria-pressed=true]{border:2px solid var(--blue);padding:8px 15px;background:var(--tint)}
+.mechanism-view figure{background:#eef0f3}
+.mechanism-view video{display:block;width:100%;aspect-ratio:1.6;object-fit:cover;background:#0a0e13}
+.mechanism-view figcaption{background:#13202c}
+.view-picker img{height:56px;background:#eef0f3}
+.hero-product{background:#eef0f3}
+.hero-product figcaption{background:#111a22}
+@media(max-width:800px){.mechanism-view{grid-template-columns:1fr}.view-picker{grid-template-columns:1fr 1fr}.lineup-cards{grid-template-columns:1fr}}
+@media(max-width:480px){.lineup-card h3{font-size:23px}.lineup-card dl div{grid-template-columns:84px 1fr}.hero-product figcaption{flex-direction:column;gap:2px}}
+/* the move to joulvo.com: the notice on the old address and the question before saved prices are used */
+.move-notice{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px 28px;width:calc(100% - 96px);max-width:1264px;margin:24px auto 0;padding:18px 24px;border:1px solid var(--blue);border-radius:10px;background:var(--tint)}
+.move-notice[hidden]{display:none}
+.move-notice p{font-size:15px;max-width:78ch}
+.move-notice .button{text-align:center}
+.import-dialog{width:min(560px,calc(100vw - 32px));border:1px solid var(--line);border-radius:12px;padding:32px;background:var(--surface);color:var(--ink)}
+.import-dialog::backdrop{background:rgb(4 8 13/.72)}
+.import-dialog h2{font-size:36px;margin-bottom:16px}
+.import-dialog p+p{margin-top:12px}
+.import-dialog .import-warning{padding-left:12px;border-left:2px solid #f0c27a;color:#f0c27a}
+.import-dialog .actions{gap:14px}
+.import-dialog [hidden]{display:none}
+#import-note{margin-top:14px}
+@media(max-width:800px){.move-notice{width:calc(100% - 40px);padding:16px 18px}.import-dialog{padding:24px}.import-dialog h2{font-size:32px}}

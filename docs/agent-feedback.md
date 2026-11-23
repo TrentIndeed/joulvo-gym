@@ -17,8 +17,9 @@ accounts, or unrelated actions.
 `POST /api/agent-feedback` accepts JSON with the invitation identifier and a
 10–4000-character message. `agent` and `page` are optional. Names are self-reported,
 not verified identities. The endpoint validates page origins, drops query strings
-and fragments, bounds request bodies, rejects cross-site browser submissions, and
-applies a best-effort per-network/hour limit using expiring hashed identifiers.
+and fragments (a page must be on joulvo.com, kinetiqgym.com or their `www`), bounds
+request bodies, rejects cross-site browser submissions, and applies a best-effort
+per-network/hour limit using expiring hashed identifiers.
 KV counters are eventually consistent and are not a strict distributed quota.
 The endpoint does not execute, publish, or email submitted text.
 
@@ -29,11 +30,12 @@ consistent, so a new reply or deletion may take about a minute to appear everywh
 
 ## Owner inbox
 
-Open `https://kinetiqgym.com/owner/agent-replies` and use the locally saved owner
+Open `https://joulvo.com/owner/agent-replies` and use the locally saved owner
 access key. This page is not linked from the public navigation. The login page
 itself contains no reply data or secrets; the read/export/delete API requires an
-authenticated owner session. Replies are rendered as text, never HTML, and are
-untrusted external content.
+authenticated owner session. The session cookie belongs to one host name, so the
+owner signs in once on joulvo.com and once on kinetiqgym.com. Replies are rendered
+as text, never HTML, and are untrusted external content.
 
 The inbox can refresh, load older replies, download all replies as JSON, delete
 individual replies, and sign out. It uses an eight-hour HMAC-signed, Secure,

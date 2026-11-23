@@ -1,5 +1,5 @@
 'use strict';
-// Old links into the builder content (kinetiqgym.com/#parts and the like) now live on build.html.
+// Old links into the builder content (kinetiqgym.com/#parts and the like, which arrive here as joulvo.com/#parts) live on build.html.
 const MOVED = ['build', 'parts', 'files', 'modify', 'software', 'open-source', 'mechanism', 'repo-status'];
 if (MOVED.includes(location.hash.slice(1))) location.replace('/build' + location.hash);
 
@@ -66,6 +66,29 @@ if (interest) {
   });
   $('#interest-skip').addEventListener('click', () => thanks('Thanks. You will hear about each stage of the build.'));
 }
+
+// the lineup: one card per build, from the same data the build preview uses (data/project.json), so the two pages cannot disagree
+const lineup = $('#home-lineup');
+if (lineup) fetch('data/project.json').then(r => { if (!r.ok) throw Error('Data unavailable'); return r.json(); }).then(d => {
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const usd = n => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n);
+  const mine = id => d.parts.filter(p => !p.motor || p.motor.includes(id));
+  const fact = (m, k) => (m.facts.find(f => f[0] === k) || [])[1] || '';
+  lineup.innerHTML = d.motors.map(m => {
+    const parts = mine(m.id), come = parts.filter(p => p.price === null).length;
+    const total = parts.filter(p => p.price !== null).reduce((a, p) => a + Math.round(p.price * 100) * p.qty, 0) / 100;
+    return `<a class="lineup-card${m.default ? ' current' : ''}" href="/build?motor=${encodeURIComponent(m.id)}#lineup">
+      <figure><img src="${esc(m.images['covers-on'])}" width="1600" height="1000" loading="lazy" alt="${esc(m.label)}: CAD preview picture of the unit${m.id === 'v1-wall-mount-300' ? ' as it hangs, its wall kit behind it against the wall' : ''}, with its covers on"><figcaption>CAD preview picture, to be re-rendered</figcaption></figure>
+      <span class="lineup-state">${esc(m.status)}${m.default ? ' · the current design' : m.lead ? ' · lowest cost' : ''}</span>
+      <strong>${esc(m.label)}</strong>
+      <span class="lineup-what">${esc(m.tagline)}</span>
+      <span class="lineup-fact">${esc(fact(m, 'Motor'))} · ${esc(fact(m, 'Power'))}</span>
+      <span class="lineup-fact">${esc(fact(m, 'Mount'))}${m.plan ? ` · ${esc(m.plan)}` : ''}</span>
+      <span class="lineup-pair"><span class="lineup-price res">${esc(m.force)}<small>resistance · ${esc(m.force_note)}</small></span>
+      <span class="lineup-price">${usd(total)}<small>in priced parts so far${come ? ` · ${come} ${come === 1 ? 'line' : 'lines'} to come` : ''}</small></span></span>
+    </a>`;
+  }).join('');
+}).catch(() => { /* the fallback link to the build preview stays */ });
 
 // work.html: the project form
 const contact = $('#contact');

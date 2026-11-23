@@ -76,7 +76,7 @@ document.querySelector('#download').addEventListener('click', event => perform(e
   } while (next);
   const url = URL.createObjectURL(new Blob([JSON.stringify(all, null, 2)], { type: 'application/json' }));
   const link = document.createElement('a'); link.href = url;
-  link.download = `kinetiq-agent-replies-${new Date().toISOString().slice(0, 10)}.json`;
+  link.download = `joulvo-agent-replies-${new Date().toISOString().slice(0, 10)}.json`;
   link.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
   status.textContent = `Downloaded ${all.length} replies.`;
 }));

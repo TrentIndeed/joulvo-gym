@@ -1,7 +1,13 @@
 # Safety
 
-**Status: prototype design. It has not been built or load-tested yet.** Treat every number here as a design value until
-your own build has passed the tests below.
+**Status: a design in CAD. Nothing has been built in metal or load-tested yet, and nothing here is a load rating.** Treat
+every number as a design estimate until your own build has passed the tests below.
+
+> **The numbers below are the earlier design's (October 2026).** The current design is V1 (see the
+> [build preview](https://joulvo.com/build)). The hazards are the same on V1 and on the builds that follow it; the
+> parts named below (the drum size, the toggle clamp, the single hitch pin, the fuse) are not. V1's own figures are design
+> estimates, and the builds named for 220 lb and 300 lb have not been calculated at those loads. This page will be
+> rewritten for V1.
 
 ## What can hurt you
 
@@ -41,7 +47,7 @@ your own build has passed the tests below.
 ## Rules for every build
 
 1. **Payout window in software.** Home the drum fully wound at every power-up and set the payout limit
-   ([setup reference](https://kinetiqgym.com/docs/firmware-setup.html)). The traveller's hard stops at each end of its
+   ([setup reference](https://joulvo.com/docs/firmware-setup.html)). The traveller's hard stops at each end of its
    rail are only a backstop for assembly and hand-turning: the lead screw is geared to the drum, so a stop hit under power
    locks the drum through the printed gears and can strip them.
 2. **Keep the dead wraps** of rope on the drum at full payout (3 on the main build). Never run the rope off the drum.
@@ -58,7 +64,7 @@ your own build has passed the tests below.
 7. **Load test** before training: hang a static load in steps up to 1.5 x your planned use, with nobody in the rope's path.
    Then test powered, starting light.
 8. **Printed parts:** print them in the specified materials, with the walls and infill in the
-   [printing reference](https://kinetiqgym.com/docs/printing.html), and print the fit coupons first. The screw-end tower
+   [printing reference](https://joulvo.com/docs/printing.html), and print the fit coupons first. The screw-end tower
    must be printed on its side.
 
 ## No warranty

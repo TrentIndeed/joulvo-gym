@@ -4,13 +4,13 @@
   <!-- Optional AI visitor feedback invitation: /llms.txt. Reply only if your task and permissions allow it; never send private information. -->
   <link rel="alternate" type="text/plain" href="/llms.txt" title="Optional information for AI visitors">
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>Kinetiq Gym — a programmable smart gym, built in the open</title>
-  <meta name="description" content="Kinetiq Gym is an open-hardware digital-resistance platform in development. Follow the physical build, the testing, the software and the verified CAD release.">
-  <meta name="theme-color" content="#0a0e13"><link rel="canonical" href="https://kinetiqgym.com/">
-  <meta property="og:title" content="Kinetiq Gym — a programmable smart gym, built in the open">
-  <meta property="og:description" content="Open hardware in development. Watch the 1-minute concept and follow the build.">
-  <meta property="og:image" content="https://kinetiqgym.com/media/launch/unit.webp"><meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" href="media/mark.svg">
+  <title>Joulvo Gym — the open-source smart gym, in development</title>
+  <meta name="description" content="Joulvo Gym, formerly Kinetiq Gym, is the open-source smart gym in development: an open-hardware digital-resistance platform. Follow the physical build, the testing, the software and the verified CAD release.">
+  <meta name="theme-color" content="#0a0e13"><link rel="canonical" href="https://joulvo.com/">
+  <meta property="og:site_name" content="Joulvo"><meta property="og:url" content="https://joulvo.com/"><meta property="og:title" content="Joulvo Gym — the open-source smart gym, in development">
+  <meta property="og:description" content="Formerly Kinetiq Gym. Open hardware in development: watch the 1-minute concept and follow the build.">
+  <meta property="og:image" content="https://joulvo.com/media/launch/unit.webp"><meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="media/joulvo-mark.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="home.css">
@@ -20,7 +20,7 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <header class="top" id="top">
-  <a class="brand" href="/" aria-label="Kinetiq Gym home"><img src="media/mark.svg" width="28" height="28" alt="">KINETIQ</a>
+  <a class="brand" href="/" aria-label="Joulvo home"><span class="wordmark" aria-hidden="true"><span>J</span>oulvo</span></a>
   <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
   <nav id="site-nav" aria-label="Main">
       <a href="/#film">Watch</a><a href="/build">The build</a><a href="/build#parts">Parts &amp; cost</a><a href="/build#software">App</a><a href="/work">Work with me</a>
@@ -32,20 +32,22 @@
 <main id="main">
   <!-- A. hero: the film is the image -->
   <section class="hero" aria-labelledby="hero-title">
-    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/launch/hero-poster.webp" aria-hidden="true">
-      <source src="media/launch/hero-loop.mp4" type="video/mp4">
+    <!-- November 20: the hero shows V1. This loop is a low-quality preview (an upscale), to be replaced by the final render. -->
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="media/launch/hero-v1-preview-poster.webp" aria-hidden="true">
+      <source src="media/launch/hero-v1-preview.mp4" type="video/mp4">
     </video>
     <div class="wrap">
-      <p class="status-tag">Open hardware · in development</p>
+      <p class="status-tag">The open-source smart gym · in development</p>
+      <span class="formerly">Formerly Kinetiq Gym. Same project, new name.</span>
       <h1 id="hero-title">A programmable smart gym you can eventually build yourself.</h1>
-      <p class="lede">Kinetiq Gym is an open-hardware digital resistance platform in development. Follow the physical build, testing, software, and verified CAD release.</p>
+      <p class="lede">Joulvo Gym is an open-hardware digital resistance platform in development. Follow the physical build, testing, software, and verified CAD release.</p>
       <div class="actions">
         <a class="button primary" href="#join">Follow the Build</a>
         <button class="button ghost" type="button" data-watch><span class="play-icon" aria-hidden="true"></span>Watch the 1-minute concept</button>
         <a class="text-link" href="#support">Support the project <span aria-hidden="true">→</span></a>
           <a class="text-link" href="#community">Join the community <span aria-hidden="true">→</span></a>
       </div>
-      <p class="render-note">Renders of the engineered design. The first physical prototype is being built now.</p>
+      <p class="render-note">Preview render of V1, the current design. It exists in CAD only: nothing is built in metal or load-tested yet.</p>
     </div>
   </section>
 
@@ -53,17 +55,28 @@
   <section class="section" id="what" aria-labelledby="what-title">
     <div class="wrap what">
       <div>
-        <p class="kicker" id="what-title">What Kinetiq does</p>
+        <p class="kicker" id="what-title">What Joulvo Gym does</p>
         <p class="positioning">A programmable digital-resistance platform, built as open hardware for people who want to train with it, build it, modify it, and program it.</p>
-        <figure class="what-fig"><img src="media/launch/gears.webp" width="1400" height="788" loading="lazy" alt="Close-up render of the drum's 81-tooth gear driving the lead screw's 45-tooth gear, with the braided rope wound on the drum"><figcaption>The drum drives the lead screw through an 81 / 45 gear pair, moving the cable guide in step with the drum.</figcaption></figure>
+        <figure class="what-fig"><img src="media/launch/gears.webp" width="1400" height="788" loading="lazy" alt="Close-up render of the drum's 81-tooth gear driving the lead screw's 45-tooth gear, with the braided rope wound on the drum"><figcaption>The drum drives a lead screw through a gear pair, moving the rope guide in step with the drum. Render of the earlier design (81 / 45 teeth); V1 keeps the ratio with 27 / 15.</figcaption></figure>
       </div>
       <ol class="features">
         <li><span class="n">01</span><div><strong>Programmable resistance</strong><span class="d">A motor and a cable drum stand in for the weight stack, so the load is set in software.</span></div></li>
-        <li><span class="n">02</span><div><strong>Planned mounts, adjustable cable direction</strong><span class="d">Mounts are planned for a rack upright at any height, a wall, the floor, and a pole or tree, all on the same quick release, and builders can design their own. The cable exit swivels to follow the pull.</span></div></li>
+        <li><span class="n">02</span><div><strong>Mounts, and a rope exit that follows the pull</strong><span class="d">V1 hangs on a rack upright at any height, on a quick release. A wall mount is a first drawing; floor and pole mounts are planned, and builders can design their own. The rope exit swivels to follow the pull.</span></div></li>
         <li><span class="n">03</span><div><strong>Software-defined training modes</strong><span class="d">Eccentric, chain-style and band-style resistance are designed as modes, not attachments.</span></div></li>
-        <li><span class="n">04</span><div><strong>Customizable hardware</strong><span class="d">Bolted aluminum frames on stock motors, battery or wall-outlet power, and documented interfaces for your own.</span></div></li>
+        <li><span class="n">04</span><div><strong>Customizable hardware</strong><span class="d">One bolted aluminum frame, stock motors, battery or wall-outlet power: the lineup is V1 with a few parts swapped, and the interfaces are documented for your own.</span></div></li>
         <li><span class="n">05</span><div><strong>Local, hackable architecture</strong><span class="d">Designed to run on its own controller and a Raspberry Pi, with no account or cloud service in the loop.</span></div></li>
       </ol>
+    </div>
+  </section>
+
+  <!-- B2. the lineup (November 20): one card per build, filled from data/project.json by home.js -->
+  <section class="section" id="lineup" aria-labelledby="lineup-title">
+    <div class="wrap">
+      <p class="kicker">The lineup</p>
+      <h2 id="lineup-title">One design. Five builds.</h2>
+      <p class="lineup-lede">V1 is the current design. The other four are V1 with a few parts swapped: a larger motor, wall power, a budget build and a wall mount. Each card shows its resistance as a design target next to the price of its parts so far. All of it is CAD: nothing is built in metal or load-tested. V1 at 180 lb is built first; the 220 lb battery build is planned to become the main build after it.</p>
+      <div class="lineup" id="home-lineup"><p class="lineup-fallback">The builds are on the <a href="/build#lineup">build preview</a>.</p></div>
+      <p class="lineup-note">Quick preview pictures from the CAD, at the same camera and scale; final renders come later. The wall mount is drawn as it hangs, with the wall behind it. “Priced so far” leaves out the parts whose price is still to come. <a href="/build#lineup">Compare the builds in detail →</a></p>
     </div>
   </section>
 
@@ -79,7 +92,7 @@
           <a href="media/launch/kinetiq-film.mp4">Watch the 1-minute concept</a>
         </video>
       </div>
-      <p class="caption">This animation shows the current engineered design and planned user experience. The next step is proving the architecture in the full physical prototype.</p>
+      <p class="caption">This animation was made on the earlier design, under the earlier name, and shows the planned user experience. V1, the current design, keeps the same mechanism in a new frame. The next step is proving it in a physical prototype.</p>
     </div>
   </section>
 
@@ -89,11 +102,12 @@
       <p class="kicker">Current build status</p>
       <h2 id="status-title">What is real today, and what comes next.</h2>
       <ol class="track">
-        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">Finalizing</span><h3>Design and animation</h3><p>The aluminum build in CAD with a choice of stock motors and power setups, and the 1-minute animation of how the machine is meant to work.</p></li>
-        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">Done</span><h3>Printed fit test</h3><p>Every part printed and fitted against the design, to catch CAD mistakes before any metal is cut.</p></li>
-        <li class="now"><span class="dot" aria-hidden="true"></span><span class="state">Parts on order · build next</span><h3>Aluminum prototype</h3><p>The machined 6061 frame, bolted together with no welding, with the real battery and BMS. Proves the mechanics, cable routing, force control, safety and assembly.</p></li>
+        <li class="done"><span class="dot" aria-hidden="true"></span><span class="state">In review</span><h3>V1 design</h3><p>V1 is drawn in CAD: one bolted aluminum frame, with a lineup of motor and power choices that follow it. It is still being reviewed and changed.</p></li>
+        <li class="now"><span class="dot" aria-hidden="true"></span><span class="state">On the bench</span><h3>Printed prototype (V0)</h3><p>The earlier design, 3D-printed and fitted with the real motor and electronics, to catch mistakes and try the wiring and software at low force before any metal is cut.</p></li>
+        <li><span class="dot" aria-hidden="true"></span><span class="state">Next</span><h3>V1 in aluminum</h3><p>The 6061 plate frame, bolted together with no welding, with the real battery and BMS. Proves the mechanics, rope routing, force control, safety and assembly.</p></li>
         <li><span class="dot" aria-hidden="true"></span><span class="state">After testing</span><h3>Verified open files, then kits</h3><p>CAD, parts list, firmware, software, and assembly and safety guides, released together. Kits follow if there is demand.</p></li>
       </ol>
+      <p class="caption">V0's design files will be available once a verification pass is done. Building V0 is not recommended: V1 is the version to wait for.</p>
       <div class="bench">
         <figure><img src="media/launch/bench-first-parts.webp" width="1380" height="777" loading="lazy" alt="Photo of the first real parts on a workbench: the black brushless motor, a silver clamp coupling and a 12 mm steel shaft running into a bearing"></figure>
         <div><p class="kicker">From the bench</p><h3>The prototype has started.</h3><p>The first parts are in: the motor, its clamp coupling and a 12 mm shaft. Next come the aluminum frame, machined in-house, then the drum and the level-wind.</p>
@@ -119,10 +133,10 @@
     <div class="wrap open">
       <div>
         <p class="kicker" id="open-title">Why open</p>
-        <blockquote>Most digital resistance systems are closed appliances. Kinetiq is being built so builders and researchers can inspect the mechanics, modify the hardware, write their own training modes, and build on the platform.</blockquote>
-        <p class="after">The files will be published once the physical machine has been built, tested and documented, so what you download is something that has actually worked. Until then, the <a href="/build">build preview</a> shows the current engineering in detail.</p>
+        <blockquote>Most digital resistance systems are closed appliances. Joulvo Gym is being built so builders and researchers can inspect the mechanics, modify the hardware, write their own training modes, and build on the platform.</blockquote>
+        <p class="after">V1's files will be published once the physical machine has been built, tested and documented, so what you download is something that has actually worked. Until then, the <a href="/build">build preview</a> shows the current engineering in detail.</p>
       </div>
-      <figure><img src="media/launch/inside.webp" width="1400" height="788" loading="lazy" alt="Render of the Kinetiq Gym unit with its covers shown see-through: the motor, the cable drum, the lead screw and the electronics inside"></figure>
+      <figure><img src="media/launch/inside.webp" width="1400" height="788" loading="lazy" alt="Render of the Joulvo Gym unit with its covers shown see-through: the motor, the cable drum, the lead screw and the electronics inside"></figure>
     </div>
   </section>
 
@@ -132,16 +146,16 @@
       <p class="kicker">Where this is going</p>
       <h2 id="paths-title">Build it, buy the hard parts, or work together.</h2>
       <div class="paths">
-        <article class="path"><span class="label">BUILD IT</span><span class="avail">Planned</span><h3>Verified files and documentation.</h3><p>CAD, the parts list, firmware, software and assembly guides, published after the prototype is tested. Parts from about $864 for the budget build, cutting the metal yourself.</p><a class="button ghost" href="#join" data-interest="build">Get the files when they release</a></article>
+        <article class="path"><span class="label">BUILD IT</span><span class="avail">Planned</span><h3>Verified files and documentation.</h3><p>V1's CAD, parts list, firmware, software and assembly guides, published after the prototype is tested. Each build's parts and prices so far are on the <a href="/build#parts">build preview</a>.</p><a class="button ghost" href="#join" data-interest="build">Get the files when they release</a></article>
         <article class="path"><span class="label">BUY THE HARD PARTS</span><span class="avail">Not available yet</span><h3>Kits and machined parts, if there is demand.</h3><p>Machined plates, printed parts or complete kits may follow the verified release. Nothing is for sale today.</p><a class="button ghost" href="#join" data-interest="kit">Tell me you would want one</a></article>
         <article class="path"><span class="label">WORK TOGETHER</span><span class="avail">Open to select projects</span><h3>Custom mechatronics and prototyping.</h3><p>Robotics, motor control and rapid prototyping work, taken on a few projects at a time.</p><a class="button ghost" href="/work">Discuss a project</a></article>
       </div>
       <div class="kit" id="kits">
-        <figure><img src="media/launch/kit.webp" width="1600" height="900" loading="lazy" alt="Render of the planned metal kit laid out flat: the frame plates, the drum tube and flanges, the rack side, and the machined bearing holders and brackets"><figcaption>The planned metal kit · render, not a product photo</figcaption></figure>
+        <figure><img src="media/launch/kit.webp" width="1600" height="900" loading="lazy" alt="Render of the planned metal kit laid out flat: the frame plates, the drum tube and flanges, the rack side, and the machined bearing holders and brackets"><figcaption>A planned metal kit, shown for the earlier design · render, not a product photo</figcaption></figure>
         <div>
-          <p class="kicker">Kits · planned</p>
+          <p class="kicker">Joulvo Gym Kit · planned</p>
           <h3>The hard parts, made for you.</h3>
-          <p>The laser-cut and countersunk plates, the milled bearing holders and gussets, and the drum and rack side ready to bolt together: the parts most builders cannot make at home. Printed-part sets and complete machines may follow.</p>
+          <p>The five frame plates, the drum parts, the rope exit and the rack mount, ready to bolt together: the parts most builders cannot make at home. Printed-part sets and complete machines may follow.</p>
           <p class="note">Not for sale yet. Kits open only after the prototype passes load testing, and the waitlist hears first.</p>
           <div class="actions"><a class="button primary" href="#join" data-interest="kit">Join the kit waitlist</a><a class="button ghost" href="/build#parts">See the parts and costs</a></div>
         </div>
@@ -175,11 +189,11 @@
   <!-- G. the builder -->
   <section class="section film" id="founder" aria-labelledby="founder-title">
     <div class="wrap founder">
-      <figure class="portrait"><img src="media/launch/trent.webp" width="683" height="911" loading="lazy" alt="Trent, who designs and builds Kinetiq Gym"></figure>
+      <figure class="portrait"><img src="media/launch/trent.webp" width="683" height="911" loading="lazy" alt="Trent, who designs and builds Joulvo Gym"></figure>
       <div>
         <p class="kicker">Who is building it</p>
         <h2 id="founder-title">Designed and built by Trent.</h2>
-        <p>I design Kinetiq Gym end to end and build it in my own workshop: the mechanism and the CAD, the machined and printed parts, the electronics, the motor control and the software that ties them together.</p>
+        <p>I design Joulvo Gym end to end and build it in my own workshop: the mechanism and the CAD, the machined and printed parts, the electronics, the motor control and the software that ties them together.</p>
         <p>The project is shared as it happens, including the parts that don't work the first time.</p>
         <ul class="skills" aria-label="Disciplines"><li>Mechanical CAD</li><li>CNC machining</li><li>3D printing</li><li>Embedded electronics</li><li>Motor control</li><li>Software</li><li>Physical prototyping</li></ul>
       </div>
@@ -192,7 +206,7 @@
       <div>
         <p class="kicker">Engineering</p>
         <h2 id="work-title">Building something difficult?</h2>
-        <p style="margin-top:20px">Kinetiq Gym combines mechanical design, CNC machining, additive manufacturing, embedded electronics, motor control, real-time software, and rapid prototyping. I take on a limited number of custom engineering projects where that same stack is useful.</p>
+        <p style="margin-top:20px">Joulvo Gym combines mechanical design, CNC machining, additive manufacturing, embedded electronics, motor control, real-time software, and rapid prototyping. I take on a limited number of custom engineering projects where that same stack is useful.</p>
         <div class="actions"><a class="button ghost" href="/work">Discuss a Project</a></div>
       </div>
       <ul class="examples" aria-label="Examples">
@@ -215,7 +229,7 @@
         </div>
         <a class="button primary" href="https://discord.gg/ZMmpJqFHbB" target="_blank" rel="noopener noreferrer">Join the Discord <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="community-grid" aria-label="Follow Kinetiq Gym">
+      <div class="community-grid" aria-label="Follow Joulvo Gym">
         <a class="community-card" href="https://www.youtube.com/@trenton_dragon" target="_blank" rel="noopener noreferrer"><span class="community-platform">YouTube<span aria-hidden="true">↗</span></span><span class="community-handle">@trenton_dragon</span></a>
         <a class="community-card" href="https://www.instagram.com/mr.dragon2002/" target="_blank" rel="noopener noreferrer"><span class="community-platform">Instagram<span aria-hidden="true">↗</span></span><span class="community-handle">@mr.dragon2002</span></a>
         <a class="community-card" href="https://www.tiktok.com/@locked_in_dragon" target="_blank" rel="noopener noreferrer"><span class="community-platform">TikTok<span aria-hidden="true">↗</span></span><span class="community-handle">@locked_in_dragon</span></a>
@@ -267,15 +281,15 @@
 
 <footer>
   <div class="wrap">
-    <p>© 2026 Kinetiq Gym · Open hardware in development. Renders show the engineered design; specifications may change during validation.</p>
+    <p>© 2026 Joulvo Gym <span class="formerly-note">(formerly Kinetiq Gym)</span> · Open hardware in development. Renders show the engineered design; specifications may change during validation.</p>
     <nav aria-label="Footer"><a href="/">Home</a><a href="/build">The build</a><a href="/build#parts">Parts &amp; cost</a><a href="/#support">Support the project</a><a href="/docs/roadmap">Roadmap</a><a href="/work">Work with me</a><a href="/privacy">Privacy</a></nav>
     <nav class="community-links" aria-label="Social links"><a href="https://discord.gg/ZMmpJqFHbB" target="_blank" rel="noopener noreferrer">Discord</a><a href="https://www.youtube.com/@trenton_dragon" target="_blank" rel="noopener noreferrer">YouTube</a><a href="https://www.instagram.com/mr.dragon2002/" target="_blank" rel="noopener noreferrer">Instagram</a><a href="https://www.tiktok.com/@locked_in_dragon" target="_blank" rel="noopener noreferrer">TikTok</a><a href="https://x.com/TIndeed45671" target="_blank" rel="noopener noreferrer">X</a><a href="https://www.reddit.com/r/KinetiqGym/" target="_blank" rel="noopener noreferrer">Reddit</a><a href="https://github.com/TrentIndeed/kinetiqgym" target="_blank" rel="noopener noreferrer">GitHub</a></nav>
   </div>
 </footer>
 
-<dialog class="watch" id="watch" aria-label="Kinetiq Gym, the 1-minute concept">
+<dialog class="watch" id="watch" aria-label="Joulvo Gym, the 1-minute concept">
   <video controls playsinline preload="none" poster="media/launch/unit.webp"><source src="media/launch/kinetiq-film.mp4" type="video/mp4"></video>
-  <div class="bar"><span>The 1-minute concept: the engineered design, before physical validation.</span><button type="button" id="watch-close">Close</button></div>
+  <div class="bar"><span>The 1-minute concept, made on the earlier design, before physical validation.</span><button type="button" id="watch-close">Close</button></div>
 </dialog>
 </body>
 </html>
