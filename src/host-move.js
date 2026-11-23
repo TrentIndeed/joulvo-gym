@@ -6,7 +6,8 @@
 // On, for GET and HEAD only:
 //   kinetiqgym.com, www.kinetiqgym.com   one 301 to the same page and query string on https://joulvo.com
 //   www.joulvo.com                       one 301 to joulvo.com
-//   any other host                       nothing (joulvo.com itself, previews, local runs)
+//   http://joulvo.com                    one 301 to the same page on https
+//   any other host                       nothing (https://joulvo.com itself, previews, local runs)
 // POST and every other method are never redirected, and nor is /api/: the forms and the feedback endpoint answer on all four names,
 // with the same database.
 //
@@ -49,7 +50,8 @@ export function hostMove(request, env, now = Date.now()) {
   if (!moveOn(env)) return null;
   const url = new URL(request.url);
   const old = OLD_HOSTS.includes(url.hostname);
-  if (!old && url.hostname !== NEW_WWW) return null;
+  const plain = url.hostname === 'joulvo.com' && url.protocol === 'http:';
+  if (!old && !plain && url.hostname !== NEW_WWW) return null;
   if (request.method !== 'GET' && request.method !== 'HEAD') return null;
   // The build page on an old name asks this before it shows its "this page moved" notice. With the move off it is a 404, as any unknown
   // /api/ path.
