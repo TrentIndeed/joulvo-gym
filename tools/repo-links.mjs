@@ -7,7 +7,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-export const REPO = 'TrentIndeed/kinetiqgym';
+export const REPO = 'TrentIndeed/joulvo-gym';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const SELF = 'tools/repo-links.mjs';

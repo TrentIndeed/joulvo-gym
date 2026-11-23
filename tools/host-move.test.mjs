@@ -158,6 +158,18 @@ test('on: www.joulvo.com goes to joulvo.com in one hop; joulvo.com and other hos
   }
 });
 
+test('on: http://joulvo.com goes to the same page on https, and only there; off: it does not', async () => {
+  for (const vars of [ON, LATER]) for (const path of PATHS) for (const query of QUERIES) for (const method of ['GET', 'HEAD']) {
+    const r = hostMove(new Request(`http://${NEW}${path}${query}`, { method }), environment(vars));
+    if (path.startsWith('/api/')) assert.equal(r, null, path);
+    else { assert.equal(r.status, 301, path); assert.equal(r.headers.get('location'), 'https://joulvo.com' + finalPath(path) + query); }
+    for (const host of ['localhost', '127.0.0.1', 'preview.example.test', 'joulvo.com.example.test', 'notjoulvo.com', 'cad.joulvo.com']) {
+      assert.equal(hostMove(new Request(`http://${host}${path}${query}`, { method }), environment(vars)), null, host + path);
+    }
+  }
+  for (const vars of OFF) assert.equal(hostMove(new Request(`http://${NEW}/work`), environment(vars)), null);
+});
+
 test('on: no method but GET and HEAD is ever redirected', async () => {
   for (const vars of [ON, LATER]) for (const host of ALL) for (const path of PATHS) for (const method of ['POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS']) {
     assert.equal(hostMove(new Request(`https://${host}${path}`, { method }), environment(vars)), null, `${method} ${host}${path}`);

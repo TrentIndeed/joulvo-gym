@@ -81,9 +81,9 @@ off unless the Worker variable `JOULVO_REDIRECTS` is exactly `on`; with it off e
 
 ### What is live now
 
-The rename to Joulvo was prepared on November 23, 2026 (branch `joulvo-rebrand-2026-11-23`), on top of the V1 lineup, and goes live
-when the owner says so. The V1 lineup was prepared on November 20, 2026 (branch `site-v1-lineup-2026-11-20`). It replaces the
-October 27 lineup (Main, Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
+The site has been Joulvo at joulvo.com since November 23, 2026 (PR #32; the owner's go), with the redirects from kinetiqgym.com on and
+the build page kept there until February 21, 2027. The repository was renamed from `kinetiqgym` the same day. The V1 lineup went live
+with it. It replaces the October 27 lineup (Main, Budget and Wall builds, PR #30). Use the check below to see which one is live. The site shows five builds:
 
 | Build | Data id | Status | Resistance shown (always "design target, not built or tested") | Motor, controller, power | Priced lines on November 20 |
 |---|---|---|---|---|---|
@@ -105,7 +105,7 @@ October 27 lineup (Main, Budget and Wall builds, PR #30). Use the check below to
   one back unless the owner asks.
 
 To check that the live site still matches your checkout, run this in bash (Git Bash on Windows). The two hashes on each line
-should be equal. (Until joulvo.com is connected, use kinetiqgym.com.)
+should be equal.
 
 ```sh
 for f in data/project.json data/parts.csv app.js; do
