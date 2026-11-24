@@ -62,7 +62,7 @@ Never commit these files, and never print or quote what is in them.
 
 - The "formerly Kinetiq Gym" lines are temporary. On the pages they carry the class `formerly` or `formerly-note`.
 - Names kept on purpose: the D1 database, the Worker and the KV namespace; the owner cookie and the feedback invitation id; the old
-  saved-price key, which is still read; `r/KinetiqGym`; the film file and the app pictures, made under the earlier name.
+  saved-price key, which is still read; `r/KinetiqGym` (an archive: the site links r/JoulvoGym); the film file and the app pictures, made under the earlier name.
 - The repository's GitHub address is in many pages. It is one constant in `tools/repo-links.mjs`: `node tools/repo-links.mjs` lists every
   place, and `node tools/repo-links.mjs --set <owner>/<name>` changes them all when the repository is renamed.
 
