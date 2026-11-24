@@ -75,3 +75,49 @@ test('without the database the forms say so', async () => {
   const e = env(); delete e.DB;
   assert.equal((await call(e, '/api/subscribe', { email: 'a@example.test' }))[0], 503);
 });
+
+// --- the newsletter service (Sender), with a stand-in for fetch: no real address, no network
+const withSender = async (answers, run, extra = { SENDER_TOKEN: 'test-value', SENDER_GROUP: 'grp1' }) => {
+  const calls = [], real = globalThis.fetch;
+  globalThis.fetch = async (url, o = {}) => {
+    calls.push({ url: String(url), method: o.method || 'GET', body: o.body ? JSON.parse(o.body) : null });
+    const a = answers.shift(); if (a instanceof Error) throw a;
+    return new Response('{}', { status: a ?? 200 });
+  };
+  try { return await run(Object.assign(env(), extra), calls); } finally { globalThis.fetch = real; }
+};
+
+test('newsletter: off without both secrets', async () => {
+  for (const extra of [{}, { SENDER_TOKEN: 'test-value' }, { SENDER_GROUP: 'grp1' }])
+    await withSender([], async (e, calls) => { assert.equal((await call(e, '/api/subscribe', { email: 'a@example.test' }))[0], 200); assert.equal(calls.length, 0); }, extra);
+});
+
+test('newsletter: a new address is added once to the group, with nothing but the email', async () => {
+  await withSender([404, 201], async (e, calls) => {
+    await call(e, '/api/subscribe', { email: 'New+One@Example.test', interest: 'kit', source: 'build' });
+    assert.deepEqual(calls.map(c => c.method), ['GET', 'POST']);
+    assert.equal(calls[0].url, 'https://api.sender.net/v2/subscribers/new%2Bone%40example.test');
+    assert.deepEqual(calls[1].body, { email: 'new+one@example.test', groups: ['grp1'], trigger_automation: false });
+    await call(e, '/api/subscribe', { email: 'new+one@example.test', interest: 'build' });
+    assert.equal(calls.length, 2);                                                        // the second signup never reaches the service
+  });
+});
+
+test('newsletter: an address the service already knows is left alone', async () => {
+  await withSender([200], async (e, calls) => { await call(e, '/api/subscribe', { email: 'left@example.test' }); assert.deepEqual(calls.map(c => c.method), ['GET']); });
+});
+
+test('newsletter: errors never fail the signup and add nobody', async () => {
+  for (const a of [[500], [401], [429], [new TypeError('down')], [404, 500], [404, new TypeError('down')]])
+    await withSender(a, async (e, calls) => {
+      assert.deepEqual(await call(e, '/api/subscribe', { email: 'b@example.test' }), [200, { ok: true, returning: false }]);
+      assert.equal(e.DB.rows('SELECT * FROM signups').length, 1);
+    });
+});
+
+test('newsletter: bad input and the honeypot send nothing', async () => {
+  await withSender([], async (e, calls) => {
+    await call(e, '/api/subscribe', { email: 'nope' }); await call(e, '/api/subscribe', { email: 'bot@example.test', website: 'x' });
+    assert.equal(calls.length, 0);
+  });
+});

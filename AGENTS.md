@@ -241,6 +241,11 @@ The forms store their entries in the Cloudflare D1 database `kinetiqgym` (bindin
 - `enquiries`: messages from the project form;
 - `rate`: hashed per-address counters.
 
+A new signup's email also goes to one group at Sender (sender.net), the service the updates are sent with (`toNewsletter` in
+`src/worker.js`). It is off unless the Worker secrets `SENDER_TOKEN` and `SENDER_GROUP` are both set; only the owner sets them
+(`npx wrangler secret put SENDER_TOKEN`). An address Sender already knows is never changed, so unsubscribes hold. A removal request means
+deleting the address in both places (the owner does it).
+
 **Only aggregate numbers are ever read or reported. Never read, export or print individual emails, names or messages.**
 
 These queries are allowed:
@@ -287,6 +292,8 @@ The AI-visitor inbox (`/owner/agent-replies`) is for the owner only:
    - email addresses, Cloudflare account, database and namespace ids, Worker subdomains, keys and tokens;
    - build-list numbers and enquiry content;
    - order details;
+   - **the owner's home address: nowhere, ever** (the owner, November 23, 2026: "no dont put my home address anywhere"), newsletter
+     footers included;
    - **location details**: no city or region names, and no local shop or branch locations. Name suppliers in general terms.
 5. **No AI attribution.** No `Co-Authored-By` or "Generated with" lines in commits or PRs.
 6. **Contributions are closed** until the verified release (see `CONTRIBUTING.md`). Don't add PR or issue templates that invite

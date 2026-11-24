@@ -10,7 +10,7 @@ const INTERESTS = ['build', 'kit', 'complete', 'research', 'engineering'];
 const EMAIL = /^[^\s@]{1,64}@[^\s@]{1,190}\.[^\s@]{2,24}$/;
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const move = hostMove(request, env);                                // off unless JOULVO_REDIRECTS is "on"
     if (move) return move;
     const url = new URL(request.url);
@@ -25,7 +25,7 @@ export default {
       try { body = await readBody(request); } catch { return reply({ error: 'That request could not be read.' }, 400); }
       if (body.website) return reply({ ok: true });                       // honeypot: bots fill the hidden field
       if (await limited(env, request, url.pathname)) return reply({ error: 'Too many requests. Please wait a few minutes and try again.' }, 429);
-      return url.pathname === '/api/subscribe' ? subscribe(body, env, request) : contact(body, env, request);
+      return url.pathname === '/api/subscribe' ? subscribe(body, env, request, ctx) : contact(body, env, request);
     }
     if (url.pathname.startsWith('/api/')) return reply({ error: 'Not found.' }, 404);
     if (MEDIA.test(url.pathname)) return media(request, env);
@@ -100,7 +100,7 @@ function slice(body, start, stop) {                                      // byte
   });
 }
 
-async function subscribe(body, env, request) {
+async function subscribe(body, env, request, ctx) {
   const email = clean(body.email, 254).toLowerCase();
   if (!EMAIL.test(email)) return reply({ error: 'Enter a valid email address.' }, 400);
   const interest = INTERESTS.includes(body.interest) ? body.interest : null;
@@ -110,7 +110,26 @@ async function subscribe(body, env, request) {
      ON CONFLICT (email) DO UPDATE SET updated = excluded.updated, interest = COALESCE(excluded.interest, signups.interest)
      RETURNING created`,
   ).bind(email, interest, clean(body.source, 40) || 'home', request.cf?.country || null, now).first();
+  if (row.created === now) {                                           // a new address only: a repeat signup never goes to the mail service again
+    const job = toNewsletter(email, env);
+    if (ctx?.waitUntil) ctx.waitUntil(job); else await job;
+  }
   return reply({ ok: true, returning: row.created !== now });   // the first signup keeps its date, page and country
+}
+
+// New signups are added to one group at Sender (sender.net), the service the updates are sent with. Off unless both Worker secrets are set:
+// SENDER_TOKEN (an API token) and SENDER_GROUP (the group's id). An address Sender already knows is left exactly as it is, so nobody who
+// unsubscribed, bounced or complained is added back. A failure never fails the signup, and nothing about the person is logged.
+const SENDER = 'https://api.sender.net/v2/subscribers';
+async function toNewsletter(email, env) {
+  if (!env.SENDER_TOKEN || !env.SENDER_GROUP) return;
+  const headers = { authorization: `Bearer ${env.SENDER_TOKEN}`, accept: 'application/json', 'content-type': 'application/json' };
+  try {
+    const known = await fetch(`${SENDER}/${encodeURIComponent(email)}`, { headers, signal: AbortSignal.timeout(8000) });
+    if (known.status !== 404) { if (!known.ok) console.log(`newsletter: lookup answered ${known.status}`); return; }
+    const made = await fetch(SENDER, { method: 'POST', headers, signal: AbortSignal.timeout(8000), body: JSON.stringify({ email, groups: [env.SENDER_GROUP], trigger_automation: false }) });
+    if (!made.ok) console.log(`newsletter: add answered ${made.status}`);
+  } catch (e) { console.log(`newsletter: ${e.name}`); }
 }
 
 async function contact(body, env, request) {
