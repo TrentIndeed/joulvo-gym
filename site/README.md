@@ -24,7 +24,7 @@ python -m http.server 8770 --directory site
 - `media/joulvo-mark*.svg`: the J alone (`-light` for dark grounds, `-dark` for light grounds, and the tab icon, which follows the
   browser's theme and has a tighter canvas). Change only a fill, never a path. `media/mark.svg` is the earlier name's mark, kept.
 - `media/builds/`: one picture set per build (covers on, covers off, the exit, the mount). They are quick previews from the CAD, to be
-  replaced by final renders; `media/launch/hero-v1-preview.mp4` is a preview too.
+  replaced by final renders. `media/launch/joulvo-hero-v1.mp4` is the final hero loop (November 23); `hero-v1-preview.*` is the earlier one, kept.
 - `data/community.json`: the donation checkout link. Payments are handled by the provider, never on this site.
 - `docs/`: readable HTML copies of the public Markdown references. Keep both copies aligned.
 

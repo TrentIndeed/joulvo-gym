@@ -95,6 +95,10 @@ button, input, textarea, select { font: inherit; color: inherit }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(180deg, rgb(10 14 19 / .55) 0%, rgb(10 14 19 / .1) 35%, rgb(10 14 19 / .55) 65%, var(--bg) 100%),
               linear-gradient(90deg, rgb(10 14 19 / .75) 0%, rgb(10 14 19 / 0) 60%) }
+@media (max-aspect-ratio: 1/1) {
+  .hero video, .hero .poster { object-position: 68% 50% }
+  .hero::after { background: linear-gradient(180deg, rgb(10 14 19 / .6) 0%, rgb(10 14 19 / .45) 18%, rgb(10 14 19 / .66) 45%, rgb(10 14 19 / .74) 70%, var(--bg) 100%) }
+}
 .hero .wrap { width: 100%; padding-block: 140px clamp(56px, 8vw, 96px) }
 .hero h1 { max-width: 17ch }
 .hero .lede { margin-top: 26px; color: #c8d3de }

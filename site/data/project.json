@@ -50,7 +50,7 @@
       "controller": "ODrive Pro",
       "power": "10S battery (2 x 5S LiPo)",
       "size": "About 445 mm long (CAD)",
-      "note": "V1 is the current design. An APS 8072S outrunner turns a 1 in drum through one bought coupling, with no belt or gear. The frame is a box of five 3/8 in 6061 plates; the covers and the deck are printed. An ODrive Pro drives the motor from two 5S LiPo packs in series behind a BMS and a 60 A fuse, and the packs take the energy back when the weight is lowered. A Raspberry Pi 4 with a 4 in touchscreen and a small control board with a Teensy 4.0 run it. The rope winds in one even layer behind a geared rope guide and leaves through an exit that swivels on two bearings; it is drawn to touch only metal on the way out.The rack mount is a quick release: two 1 in pins hold it on the upright, the unit hangs on four studs and a spring latch locks it. 180 lb is the design target: it is about where the calculation reaches the controller's current limit on this drum. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.",
+      "note": "V1 is the current design. An APS 8072S outrunner turns a 1 in drum through one bought coupling, with no belt or gear. The frame is a box of five 3/8 in 6061 plates; the covers and the deck are printed. An ODrive Pro drives the motor from two 5S LiPo packs in series behind a BMS and a 60 A fuse, and the packs take the energy back when the weight is lowered. A Raspberry Pi 4 with a 4 in touchscreen and a small control board with a Teensy 4.0 run it. The rope winds in one even layer behind a geared rope guide and leaves through an exit that swivels on two bearings; it is drawn to touch only metal on the way out. The rack mount is a quick release: two 1 in pins hold it on the upright, the unit hangs on four studs and a spring latch locks it. 180 lb is the design target: it is about where the calculation reaches the controller's current limit on this drum. Nothing is built in metal or load-tested. Every number is a design estimate from the CAD and from hand calculations, and may change.",
       "images": {
         "covers-on": "media/builds/v1-covers-on.webp",
         "covers-off": "media/builds/v1-covers-off.webp",
@@ -58,8 +58,8 @@
         "mount": "media/builds/v1-mount.webp"
       },
       "loop": {
-        "video": "media/launch/hero-v1-preview.mp4",
-        "poster": "media/launch/hero-v1-preview-poster.webp"
+        "video": "media/launch/joulvo-hero-v1.mp4",
+        "poster": "media/launch/joulvo-hero-v1-poster.webp"
       }
     },
     {
